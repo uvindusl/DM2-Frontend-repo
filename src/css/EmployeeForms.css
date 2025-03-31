@@ -1,0 +1,79 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.form-container {
+  --input-focus: #ff8c00; /* Changed to Dark Orange */
+  --font-color: #333;
+  --font-color-sub: #666;
+  --bg-color: #fff;
+  --bg-color-alt: #666;
+  --main-color: #ff5722; /* Changed to Deep Orange */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-content {
+  padding: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: #fff3e0; /* Changed to Light Orange */
+  gap: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  box-shadow: 4px 4px var(--main-color);
+  align-self: center;
+}
+
+label {
+  text-align: left;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+input {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--font-color);
+  padding: 5px 10px;
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--font-color-sub);
+  opacity: 0.8;
+}
+
+input:focus {
+  border: 2px solid var(--input-focus);
+}
+
+.submit-btn {
+  margin: 20px 0 20px 0;
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: #ffab91;
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  align-self: center;
+}

@@ -1,0 +1,12 @@
+.navbar {
+  background-color: #ff8c00 !important;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Brand/logo styling */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: white !important;
+}

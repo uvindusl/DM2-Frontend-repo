@@ -1,0 +1,63 @@
+.card {
+  border-radius: 25px;
+  margin: 20px;
+}
+.pic-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  height: 200px;
+  width: 800px;
+  overflow: hidden;
+}
+
+.sub-card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.img-container {
+  /* width: 300px; */
+  width: 100%;
+}
+
+.img-container.visa {
+  /* height: 300px;*/
+  height: 75%;
+}
+
+/* .img-container.mastercard {
+  height: 225px;
+} */
+
+.img-container.paypal {
+  width: 150%;
+  height: 150%;
+}
+
+.img-container:hover {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.text {
+  margin: 15px;
+  text-align: left;
+}
+
+.title1,
+.title2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 10px;
+}

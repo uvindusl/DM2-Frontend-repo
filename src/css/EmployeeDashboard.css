@@ -1,0 +1,254 @@
+.bg-gray-100 {
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+  background-attachment: fixed;
+  position: relative;
+}
+
+.bg-gray-100::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f97316' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.add-button {
+  background-color: #fea74a;
+  color: black;
+}
+
+/* Container with backdrop blur for depth */
+main.container {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+  background: radial-gradient(transparent, rgb(255, 162, 0));
+  /* height: 400px; */
+}
+
+/* Elegant heading with accent line */
+.text-xl {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #1e293b;
+  position: relative;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem !important;
+  display: inline-block;
+}
+
+.text-xl::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #f97316 0%, #fdba74 100%);
+  border-radius: 2px;
+}
+
+/* Stylish search icon */
+.absolute.left-3.top-3 {
+  color: #f97316;
+  font-size: 1.25rem;
+  opacity: 0.75;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus + .absolute {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Card grid layout with improved spacing */
+.grid {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Beautiful card design */
+.grid > div {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: linear-gradient(145deg, #e3d9d9, #f8fafc);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  margin-bottom: 10px;
+  width: 350px;
+}
+
+.grid > div::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(249, 115, 22, 0.15);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.grid > div:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.grid > div:hover::before {
+  opacity: 1;
+}
+
+/* Card content styling */
+.grid > div .p-6 {
+  padding: 1.75rem !important;
+}
+
+/* Beautiful icon styling */
+.grid .text-3xl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.15) 0%,
+    rgba(249, 115, 22, 0.05) 100%
+  );
+  border-radius: 16px;
+  margin-bottom: 1.25rem;
+  font-size: 2rem;
+  color: #f97316;
+  text-shadow: 0 2px 5px rgba(249, 115, 22, 0.2);
+  box-shadow: 0 4px 10px -2px rgba(249, 115, 22, 0.1);
+  transition: all 0.3s ease;
+}
+
+.grid > div:hover .text-3xl {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.25) 0%,
+    rgba(249, 115, 22, 0.15) 100%
+  );
+}
+
+/* Card title styling */
+.grid h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.3px;
+  position: relative;
+  display: inline-block;
+}
+
+.grid h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 40px;
+  height: 3px;
+  background-color: #f97316;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.grid > div:hover h3::after {
+  width: 100%;
+}
+
+/* Card description styling */
+.grid p {
+  color: #64748b;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Empty search results styling */
+.text-center p {
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px dashed #cbd5e1;
+  color: #64748b;
+  font-size: 1.1rem;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  main.container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+  }
+
+  .grid {
+    gap: 1rem !important;
+  }
+
+  .grid .text-3xl {
+    width: 50px;
+    height: 50px;
+    font-size: 1.75rem;
+  }
+}
+
+/* Add subtle animation to cards */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.grid > div {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.grid > div:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.grid > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.grid > div:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.grid > div:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

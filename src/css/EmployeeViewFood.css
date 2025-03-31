@@ -1,0 +1,40 @@
+.food-grid-page-evf {
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  background: radial-gradient(transparent, rgb(255, 162, 0));
+  min-height: 70vh;
+  border-radius: 25px;
+}
+
+.food-grid-evf {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loading-message,
+.error-message {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+.error-message {
+  color: #ff4d4f;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .food-grid-page-evf {
+    padding: 16px;
+  }
+}

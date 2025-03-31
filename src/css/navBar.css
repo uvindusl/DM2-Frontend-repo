@@ -1,0 +1,62 @@
+/* Main navbar styling */
+.navbar {
+  background-color: #ff8c00 !important; /* Orange background */
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Brand/logo styling */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: white !important;
+}
+
+/* Center the navbar items */
+.navbar-collapse {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-nav {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Nav items styling */
+.nav-item {
+  margin: 0 15px;
+  text-align: center;
+}
+
+.nav-link {
+  color: white !important;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  color: #fff5e1 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .nav-item {
+    margin: 5px 0;
+  }
+}
+
+/* Fix for the toggle button positioning */
+.navbar-toggler {
+  border-color: white;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
