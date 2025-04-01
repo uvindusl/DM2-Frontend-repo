@@ -15,7 +15,8 @@
   display: flex;
   flex-direction: column;
   min-height: 70vh;
-  background-image: url("../assets/background_imresizer.jpg");
+  background-image: url("../assets/background-DM2.jpg");
+  backdrop-filter: blur(2px);
 }
 
 h2 {
@@ -23,7 +24,7 @@ h2 {
   font-size: 25px;
   font-weight: 900;
   text-align: center;
-  color: #ff6200;
+  color: #ffffff;
 }
 
 .footer5 {

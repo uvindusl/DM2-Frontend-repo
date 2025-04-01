@@ -6,12 +6,12 @@ body {
 }
 
 .form-container {
-  --input-focus: #ff8c00; /* Changed to Dark Orange */
+  --input-focus: #88d66c; /* Changed to Dark Orange */
   --font-color: #333;
   --font-color-sub: #666;
   --bg-color: #fff;
   --bg-color-alt: #666;
-  --main-color: #ff5722; /* Changed to Deep Orange */
+  --main-color: #73bba3; /* Changed to Deep Orange */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,7 +69,7 @@ input:focus {
   height: 40px;
   border-radius: 5px;
   border: 2px solid var(--main-color);
-  background-color: #ffab91;
+  background-color: #b4e380;
   box-shadow: 4px 4px var(--main-color);
   font-size: 17px;
   font-weight: 600;
