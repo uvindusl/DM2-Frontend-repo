@@ -158,7 +158,7 @@ function CheckoutPage() {
           <p>{error}</p>
         ) : checkoutItems.length > 0 ? (
           <div className="checkout-container1">
-            <h2>Checkout Summary</h2>
+            <h2 className="checkout-h2">Checkout Summary</h2>
             <ul className="checkout-items">
               {checkoutItems.map((item, index) => (
                 <li key={`${item.id}-${index}`} className="checkout-item">

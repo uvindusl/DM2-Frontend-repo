@@ -99,15 +99,15 @@ body {
   font-weight: bold;
 }
 .action-button-add-to-cart {
-  background-color: #ff6f0019;
-  color: orange;
+  background-color: #00ff0019;
+  color: green;
   font-weight: bold;
   width: 5cm;
   border-width: 2px;
-  border-color: #fe8629e0;
+  border-color: #88d66c;
 }
 .action-button-add-to-cart:hover {
-  background-color: #ff6f00;
+  background-color: #88d66c;
   color: white;
 }
 
