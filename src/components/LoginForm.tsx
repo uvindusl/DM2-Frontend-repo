@@ -124,7 +124,7 @@ const LoginForm: React.FC<LoginFormProps> = ({
 
 const StyledWrapper = styled.div`
   .wrapper {
-    --input-focus: #f6fb7a; /* Changed to Dark Orange */
+    --input-focus: #73bba3; /* Changed to Dark Orange */
     --font-color: #333;
     --font-color-sub: #666;
     --bg-color: #fff;
@@ -253,7 +253,7 @@ const StyledWrapper = styled.div`
     justify-content: center;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    background: #f6fb7a; /* Changed to Light Orange */
+    background: rgb(255, 255, 255); /* Changed to Light Orange */
     gap: 20px;
     border-radius: 5px;
     border: 2px solid var(--main-color);
