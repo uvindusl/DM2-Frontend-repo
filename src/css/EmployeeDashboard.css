@@ -18,7 +18,7 @@
 }
 
 .add-button {
-  background-color: #fea74a;
+  background-color: #88d66c;
   color: black;
 }
 
@@ -33,7 +33,7 @@ main.container {
   margin-bottom: 2rem;
   position: relative;
   z-index: 1;
-  background: radial-gradient(transparent, rgb(255, 162, 0));
+  background: radial-gradient(transparent, #b4e380);
   /* height: 400px; */
 }
 
@@ -56,13 +56,13 @@ main.container {
   left: 0;
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #f97316 0%, #fdba74 100%);
+  background: linear-gradient(90deg, #73bba3 0%, #b4e380 100%);
   border-radius: 2px;
 }
 
 /* Stylish search icon */
 .absolute.left-3.top-3 {
-  color: #f97316;
+  color: #73bba3;
   font-size: 1.25rem;
   opacity: 0.75;
   transition: all 0.3s ease;
@@ -127,15 +127,11 @@ input[type="text"]:focus + .absolute {
   justify-content: center;
   width: 64px;
   height: 64px;
-  background: linear-gradient(
-    135deg,
-    rgba(249, 115, 22, 0.15) 0%,
-    rgba(249, 115, 22, 0.05) 100%
-  );
+  background: linear-gradient(135deg, #b0d4c8 0%, #73bba3 100%);
   border-radius: 16px;
   margin-bottom: 1.25rem;
   font-size: 2rem;
-  color: #f97316;
+  color: #b4e380;
   text-shadow: 0 2px 5px rgba(249, 115, 22, 0.2);
   box-shadow: 0 4px 10px -2px rgba(249, 115, 22, 0.1);
   transition: all 0.3s ease;
@@ -143,11 +139,7 @@ input[type="text"]:focus + .absolute {
 
 .grid > div:hover .text-3xl {
   transform: scale(1.1) rotate(5deg);
-  background: linear-gradient(
-    135deg,
-    rgba(249, 115, 22, 0.25) 0%,
-    rgba(249, 115, 22, 0.15) 100%
-  );
+  background: linear-gradient(135deg, #519b82 0%, #73bba3 100%);
 }
 
 /* Card title styling */
@@ -169,7 +161,7 @@ input[type="text"]:focus + .absolute {
   bottom: -4px;
   width: 40px;
   height: 3px;
-  background-color: #f97316;
+  background-color: #73bba3;
   border-radius: 4px;
   transition: width 0.3s ease;
 }

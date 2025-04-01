@@ -69,12 +69,12 @@ const EmployeeLoginForm: React.FC<EmployeeLoginFormProps> = ({
 
 const StyledWrapper = styled.div`
   .wrapper {
-    --input-focus: #ff8c00; /* Changed to Dark Orange */
+    --input-focus: #73bba3; /* Changed to Dark Orange */
     --font-color: #333;
     --font-color-sub: #666;
     --bg-color: #fff;
     --bg-color-alt: #666;
-    --main-color: #ff5722; /* Changed to Deep Orange */
+    --main-color: #88d66c; /* Changed to Deep Orange */
     /* display: flex; */
     /* flex-direction: column; */
     /* align-items: center; */
@@ -198,7 +198,7 @@ const StyledWrapper = styled.div`
     justify-content: center;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    background: #fff3e0; /* Changed to Light Orange */
+    background: rgb(255, 255, 255); /* Changed to Light Orange */
     gap: 20px;
     border-radius: 5px;
     border: 2px solid var(--main-color);
@@ -260,7 +260,7 @@ const StyledWrapper = styled.div`
     height: 40px;
     border-radius: 5px;
     border: 2px solid var(--main-color);
-    background-color: #ffab91; /* Changed to Light Orange */
+    background-color: #73bba3; /* Changed to Light Orange */
     box-shadow: 4px 4px var(--main-color);
     font-size: 17px;
     font-weight: 600;
