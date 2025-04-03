@@ -51,7 +51,11 @@ function HomePage() {
     <div className="home">
       <NavBar />
       <div className="home-container">
-        <h1 className="home-title">Our Pizza Menu</h1>
+        <h1 className="home-title">Urban Foods</h1>
+        <p className="home-subtitle">
+          The place where busy life meets traditional delecacy
+        </p>
+
         <div className="search-wrapper">
           <SearchBar onSearch={handleSearch} />
         </div>

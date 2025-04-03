@@ -1,5 +1,5 @@
 import "../css/Footer.css";
-import Garfieldpic from "../../src/assets/Garfieldpic.png";
+import Garfieldpic from "../../src/assets/vegetables.png";
 import instagram from "../../src/assets/instagram.png";
 import facebook from "../../src/assets/facebook.png";
 import twitter from "../../src/assets/twitter.png";
@@ -22,8 +22,8 @@ function Footer() {
               Independence Ave, <br></br>
               Colombo00700, <br></br>
               Sri Lanka.<br></br>
-              <a className="custom-a" href="mailto:garfields@gmail.com">
-                garfields@gmail.com
+              <a className="custom-a" href="mailto:urbanfood@gmail.com">
+                urbanfood@gmail.com
               </a>
               <br></br>
               +94 76-5506968
@@ -53,7 +53,7 @@ function Footer() {
         </div>
       </div>
       <div className="bottom">
-        <p>&copy; 2025 Garfield's Cheesy Haven</p>
+        <p>&copy; 2025 UrbanFood</p>
       </div>
     </footer>
   );
