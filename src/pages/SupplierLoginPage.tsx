@@ -30,12 +30,10 @@ function SupplierLoginPage() {
       .get(apiUrl)
       .then((response) => {
         if (response.status === 200) {
-          //HTTP 200 status is scuccessful connect with the server and send data
           const employeeid = response.data;
           setemployee(response.data);
-          navigate("/employee/dashboard");
+          navigate("/supplier/dashboard");
 
-          //stroe the employee id
           sessionStorage.setItem(
             "employeeId",
             employeeid.employeeId.toString()

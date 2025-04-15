@@ -16,6 +16,7 @@ import EmployeeDashboard from "./pages/EmployeeDashboard";
 import PaymentPage from "./pages/PaymentPage";
 import EmployeeViewOrders from "./pages/EmployeeViewOrders";
 import SupplierLoginPage from "./pages/SupplierLoginPage";
+import SupplierDashboard from "./pages/SupplierDashborad";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
             element={<EmployeeViewOrders />}
           />
           <Route path="/supplier" element={<SupplierLoginPage />} />
+          <Route path="/supplier/dashboard" element={<SupplierDashboard />} />
         </Routes>
       </main>
     </div>
