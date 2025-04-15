@@ -19,7 +19,7 @@ function EmployeesViewPage() {
 
   const DeleteClick = async (employeeId: number) => {
     try {
-      const apiUrl = `http://localhost:8082/employee-micro/employees/${employeeId}`;
+      const apiUrl = `http://localhost:8080/urban-food/employees/${employeeId}`;
       await axios.delete(apiUrl);
       window.location.reload();
     } catch (error) {
@@ -29,7 +29,7 @@ function EmployeesViewPage() {
   };
 
   useEffect(() => {
-    const apiUrl = "http://localhost:8082/employee-micro/employees";
+    const apiUrl = "http://localhost:8080/urban-food/employees";
 
     setLoading(true);
     axios
