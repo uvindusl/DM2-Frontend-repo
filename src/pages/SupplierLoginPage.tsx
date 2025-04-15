@@ -29,8 +29,8 @@ function SupplierLoginPage() {
 
     axios
       .post(apiUrl, {
-        suppliername: username,
-        supplierpassword: password,
+        name: username,
+        password: password,
       })
       .then((response) => {
         if (response.status === 200) {
@@ -64,16 +64,16 @@ function SupplierLoginPage() {
   };
 
   const handleSignUp = (username: string, address: string, tel: number) => {
-    const apiUrl = "http://localhost:8080/customer-micro/customers";
+    const apiUrl = "http://localhost:8080/urban-food/suppliers";
 
     setLoading(true);
     setError(null);
 
     axios
       .post(apiUrl, {
-        customerName: username,
-        customerAddress: address,
-        customerTel: tel,
+        name: username,
+        address: address,
+        tell: tel,
       })
       .then((response) => {
         if (response.status === 200) {
