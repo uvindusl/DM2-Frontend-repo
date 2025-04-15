@@ -2,65 +2,124 @@ import styled from "styled-components";
 import "../css/LoginForm.css";
 import React, { useState } from "react";
 
-interface EmployeeLoginFormProps {
-  onLogin: (username: string, password: string) => void;
+interface LoginFormProps {
+  onLogin: (username: string, tel: number) => void;
+  onSignUp: (username: string, address: string, tel: number) => void;
   loading?: boolean;
   error?: string | null;
 }
 
-const EmployeeLoginForm: React.FC<EmployeeLoginFormProps> = ({
-  // React.FC represents the type of a functional component
+const supplierLoginForm: React.FC<LoginFormProps> = ({
+  //React.FC is represents the type of a functional component
   onLogin,
+  onSignUp,
   loading = false,
   error = null,
 }) => {
   const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [tel, setTel] = useState<string>("");
 
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onLogin(username, password);
+    const telNumber = parseInt(tel, 10);
+    if (!isNaN(telNumber)) {
+      onLogin(username, telNumber);
+    }
   };
 
+  const handleSignUpSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const telNumber = parseInt(tel, 10);
+    if (!isNaN(telNumber)) {
+      onSignUp(username, address, telNumber);
+    }
+  };
   return (
     <StyledWrapper>
       <div className="wrapper">
         <div className="card-switch">
-          <div className="flip-card__inner">
-            <div className="flip-card__front">
-              <div className="title">
-                Employee<br></br> Log in
-              </div>
-              <form className="flip-card__form" onSubmit={handleLoginSubmit}>
-                <label>
+          <label className="switch">
+            <input type="checkbox" className="toggle" />
+            <span className="slider" />
+            <span className="card-side" />
+            <div className="flip-card__inner">
+              <div className="flip-card__front">
+                <div className="title">
+                  Supplier<br></br> Log in
+                </div>
+                <form className="flip-card__form" onSubmit={handleLoginSubmit}>
                   <input
                     className="flip-card__input"
-                    placeholder="username"
+                    name="username"
+                    placeholder="User Name"
                     type="text"
+                    required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    disabled={loading}
                   />
-                </label>
-                <label>
                   <input
                     className="flip-card__input"
-                    placeholder="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    name="tel"
+                    placeholder="Phone Number"
+                    type="number"
+                    required
+                    value={tel}
+                    onChange={(e) => setTel(e.target.value)}
+                    disabled={loading}
                   />
-                </label>
-                <button
-                  className="flip-card__btn"
-                  type="submit"
-                  disabled={loading}
-                >
-                  Login
-                </button>
-                {error && <div className="error">{error}</div>}
-              </form>
+                  {error && <div className="error-message">{error}</div>}
+                  <button
+                    className="flip-card__btn"
+                    type="submit"
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : "Let's go!"}
+                  </button>
+                </form>
+              </div>
+              <div className="flip-card__back">
+                <div className="title">
+                  Supplier<br></br>Sign Up
+                </div>
+                <form className="flip-card__form" onSubmit={handleSignUpSubmit}>
+                  <input
+                    className="flip-card__input"
+                    placeholder="Name"
+                    type="text"
+                    required
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    disabled={loading}
+                  />
+                  <input
+                    className="flip-card__input"
+                    name="text"
+                    placeholder="Address"
+                    type="text"
+                    required
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    disabled={loading}
+                  />
+                  <input
+                    className="flip-card__input"
+                    name="password"
+                    placeholder="Phone Number"
+                    type="number"
+                    required
+                    value={tel}
+                    onChange={(e) => setTel(e.target.value)}
+                    disabled={loading}
+                  />
+                  <button className="flip-card__btn" type="submit">
+                    Confirm!
+                  </button>
+                </form>
+              </div>
             </div>
-          </div>
+          </label>
         </div>
       </div>
     </StyledWrapper>
@@ -284,4 +343,4 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default EmployeeLoginForm;
+export default supplierLoginForm;

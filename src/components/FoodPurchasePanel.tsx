@@ -84,6 +84,9 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
             <div className="product-info-label">Price</div>
             <div className="product-info-value">{food.price}</div>
 
+            <div className="product-info-label">Supplier</div>
+            <div className="product-info-value">{food.price}</div>
+
             <div className="product-info-label">Quantity</div>
             <div className="quantity-selector">
               <button
@@ -110,6 +113,19 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
             >
               {addtocartloading ? "loading..." : " Add to cart"}
             </button>
+          </div>
+          <br></br>
+          <br></br>
+          <br></br>
+          <div className="product-review">
+            <div className="product-info-label">
+              <p className="product-review-p1">Write a review</p>
+              <p className="product-review-p2">Your ideas matters</p>
+            </div>
+            <div className="text-input">
+              <textarea className="text-area" />
+            </div>
+            <button className="action-button-review">Submit</button>
           </div>
         </div>
       </div>

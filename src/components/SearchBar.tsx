@@ -21,7 +21,7 @@ const SearchBar = ({ onSearch }: { onSearch: (query: string) => void }) => {
             value={query}
             onChange={handleInputChange}
             required
-            placeholder="Search World Best Pizza"
+            placeholder="Search here for freshness"
             className="ui-input"
             type="text"
           />
