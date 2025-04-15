@@ -1,10 +1,17 @@
 import styled from "styled-components";
 import "../css/LoginForm.css";
 import React, { useState } from "react";
+import { compileAst } from "tailwindcss";
 
 interface LoginFormProps {
   onLogin: (username: string, password: string) => void;
-  onSignUp: (username: string, address: string, tel: number) => void;
+  onSignUp: (
+    username: string,
+    address: string,
+    tel: number,
+    company: string,
+    password: string
+  ) => void;
   loading?: boolean;
   error?: string | null;
 }
@@ -31,7 +38,7 @@ const supplierLoginForm: React.FC<LoginFormProps> = ({
     e.preventDefault();
     const telNumber = parseInt(tel, 10);
     if (!isNaN(telNumber)) {
-      onSignUp(username, address, telNumber);
+      onSignUp(username, address, telNumber, company, password);
     }
   };
   return (
@@ -116,7 +123,7 @@ const supplierLoginForm: React.FC<LoginFormProps> = ({
                     className="flip-card__input"
                     name="text"
                     placeholder="Company"
-                    type="number"
+                    type="text"
                     required
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
