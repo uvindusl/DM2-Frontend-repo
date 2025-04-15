@@ -6,7 +6,7 @@ import "../css/LoginPage.css";
 import axios from "axios";
 import CustomerLoginHeader from "../components/CustomerLoginHeader";
 
-interface Customer {
+interface Supplier {
   supplierId: number;
   supplierName: string;
   supplierAddress: string;
@@ -16,7 +16,7 @@ interface Customer {
 }
 
 function SupplierLoginPage() {
-  const [customer, setsupplier] = useState<Customer | null>(null);
+  const [supplier, setsupplier] = useState<Supplier | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -29,8 +29,8 @@ function SupplierLoginPage() {
 
     axios
       .post(apiUrl, {
-        suppliername: username,
-        supplierpassword: password,
+        name: username,
+        password: password,
       })
       .then((response) => {
         if (response.status === 200) {
@@ -63,17 +63,25 @@ function SupplierLoginPage() {
       });
   };
 
-  const handleSignUp = (username: string, address: string, tel: number) => {
-    const apiUrl = "http://localhost:8080/customer-micro/customers";
+  const handleSignUp = (
+    username: string,
+    address: string,
+    tel: number,
+    company: string,
+    password: string
+  ) => {
+    const apiUrl = "http://localhost:8080/urban-food/suppliers";
 
     setLoading(true);
     setError(null);
 
     axios
       .post(apiUrl, {
-        customerName: username,
-        customerAddress: address,
-        customerTel: tel,
+        name: username,
+        address: address,
+        tell: tel,
+        company: company,
+        password: password,
       })
       .then((response) => {
         if (response.status === 200) {

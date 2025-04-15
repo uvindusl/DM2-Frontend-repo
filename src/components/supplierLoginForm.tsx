@@ -1,10 +1,17 @@
 import styled from "styled-components";
 import "../css/LoginForm.css";
 import React, { useState } from "react";
+import { compileAst } from "tailwindcss";
 
 interface LoginFormProps {
   onLogin: (username: string, password: string) => void;
-  onSignUp: (username: string, address: string, tel: number) => void;
+  onSignUp: (
+    username: string,
+    address: string,
+    tel: number,
+    company: string,
+    password: string
+  ) => void;
   loading?: boolean;
   error?: string | null;
 }
@@ -19,20 +26,19 @@ const supplierLoginForm: React.FC<LoginFormProps> = ({
   const [username, setUsername] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [tel, setTel] = useState<string>("");
+  const [company, setCompany] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const telNumber = parseInt(tel, 10);
-    if (!isNaN(telNumber)) {
-      onLogin(username, telNumber.toString());
-    }
+    onLogin(username, password);
   };
 
   const handleSignUpSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const telNumber = parseInt(tel, 10);
     if (!isNaN(telNumber)) {
-      onSignUp(username, address, telNumber);
+      onSignUp(username, address, telNumber, company, password);
     }
   };
   return (
@@ -61,12 +67,12 @@ const supplierLoginForm: React.FC<LoginFormProps> = ({
                   />
                   <input
                     className="flip-card__input"
-                    name="tel"
-                    placeholder="Phone Number"
-                    type="number"
+                    name="Password"
+                    placeholder="Password"
+                    type="text"
                     required
-                    value={tel}
-                    onChange={(e) => setTel(e.target.value)}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     disabled={loading}
                   />
                   {error && <div className="error-message">{error}</div>}
@@ -105,12 +111,32 @@ const supplierLoginForm: React.FC<LoginFormProps> = ({
                   />
                   <input
                     className="flip-card__input"
-                    name="password"
+                    name="phonenu"
                     placeholder="Phone Number"
                     type="number"
                     required
                     value={tel}
                     onChange={(e) => setTel(e.target.value)}
+                    disabled={loading}
+                  />
+                  <input
+                    className="flip-card__input"
+                    name="text"
+                    placeholder="Company"
+                    type="text"
+                    required
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                    disabled={loading}
+                  />
+                  <input
+                    className="flip-card__input"
+                    name="password"
+                    placeholder="Password"
+                    type="password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     disabled={loading}
                   />
                   <button className="flip-card__btn" type="submit">
