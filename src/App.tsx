@@ -15,6 +15,7 @@ import UpdateFood from "./pages/UpdateFood";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import PaymentPage from "./pages/PaymentPage";
 import EmployeeViewOrders from "./pages/EmployeeViewOrders";
+import SupplierLoginPage from "./pages/SupplierLoginPage";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
             path="/employee/view/orders"
             element={<EmployeeViewOrders />}
           />
+          <Route path="/supplier" element={<SupplierLoginPage />} />
         </Routes>
       </main>
     </div>
