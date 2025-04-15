@@ -8,7 +8,7 @@ interface EmployeeLoginFormProps {
   error?: string | null;
 }
 
-const EmployeeLoginForm: React.FC<EmployeeLoginFormProps> = ({
+const SupplierLoginForm: React.FC<EmployeeLoginFormProps> = ({
   // React.FC represents the type of a functional component
   onLogin,
   loading = false,
@@ -29,7 +29,7 @@ const EmployeeLoginForm: React.FC<EmployeeLoginFormProps> = ({
           <div className="flip-card__inner">
             <div className="flip-card__front">
               <div className="title">
-                Employee<br></br> Log in
+                Supplier<br></br> Log in
               </div>
               <form className="flip-card__form" onSubmit={handleLoginSubmit}>
                 <label>
@@ -284,4 +284,4 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default EmployeeLoginForm;
+export default SupplierLoginForm;

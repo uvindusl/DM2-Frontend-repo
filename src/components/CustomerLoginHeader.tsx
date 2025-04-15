@@ -4,7 +4,7 @@ function CustomerLoginHeader() {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary justify-content-center">
         <div className="container-fluid">
-          <a className="navbar-brand">Garfield's Cheesy Haven</a>
+          <a className="navbar-brand">Urban Food Store</a>
         </div>
       </nav>
     </>
