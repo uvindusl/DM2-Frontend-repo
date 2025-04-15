@@ -19,12 +19,20 @@ const SupplierDashboard: React.FC = () => {
 
   const dashboardTiles: DashboardTile[] = [
     {
-      title: "View Foods",
-      description: "View Foods",
+      title: "Manage Foods",
+      description: "Update and Delete Foods",
       icon: "🍕",
       route: "/employee/view/foods",
-      routeAdd: "",
+      routeAdd: "/employee/add/food",
       buttonName: " foods",
+    },
+    {
+      title: "View Orders",
+      description: "View Order History and Update Status",
+      icon: "📦",
+      route: "/employee/view/orders",
+      routeAdd: "",
+      buttonName: "",
     },
   ];
 
