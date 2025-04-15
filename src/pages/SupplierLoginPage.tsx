@@ -7,31 +7,36 @@ import axios from "axios";
 import CustomerLoginHeader from "../components/CustomerLoginHeader";
 
 interface Customer {
-  customerId: number;
-  customerName: string;
-  customerAddress: string;
-  customerTel: number;
+  supplierId: number;
+  supplierName: string;
+  supplierAddress: string;
+  supplierTel: number;
+  supplierCompany: string;
+  supplierPassword: string;
 }
 
 function SupplierLoginPage() {
-  const [customer, setCustomer] = useState<Customer | null>(null);
+  const [customer, setsupplier] = useState<Customer | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleLogin = (username: string, tel: number) => {
-    const apiUrl = `http://localhost:8080/customer-micro/customers?name=${username}&tel=${tel}`;
+  const handleLogin = (username: string, password: string) => {
+    const apiUrl = "http://localhost:8080/urban-food/suppliers/login";
 
     setLoading(true);
     setError(null);
 
     axios
-      .get(apiUrl)
+      .post(apiUrl, {
+        suppliername: username,
+        supplierpassword: password,
+      })
       .then((response) => {
         if (response.status === 200) {
           //HTTP 200 status is scuccessful connect with the server and send data
           const customerid = response.data;
-          setCustomer(response.data);
+          setsupplier(response.data);
           navigate("/supplier/dashboard"); // Ensure this matches the route defined in your router
 
           //stroe the customer id
@@ -74,7 +79,7 @@ function SupplierLoginPage() {
         if (response.status === 200) {
           // HTTP 201 indicates resource creation
           const newCustomer = response.data;
-          setCustomer(newCustomer);
+          setsupplier(newCustomer);
           navigate("/supplier/dashboard");
 
           //stroe the customer id

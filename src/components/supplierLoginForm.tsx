@@ -3,7 +3,7 @@ import "../css/LoginForm.css";
 import React, { useState } from "react";
 
 interface LoginFormProps {
-  onLogin: (username: string, tel: number) => void;
+  onLogin: (username: string, password: string) => void;
   onSignUp: (username: string, address: string, tel: number) => void;
   loading?: boolean;
   error?: string | null;
@@ -24,7 +24,7 @@ const supplierLoginForm: React.FC<LoginFormProps> = ({
     e.preventDefault();
     const telNumber = parseInt(tel, 10);
     if (!isNaN(telNumber)) {
-      onLogin(username, telNumber);
+      onLogin(username, telNumber.toString());
     }
   };
 
