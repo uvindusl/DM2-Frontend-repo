@@ -7,7 +7,7 @@ function NavBar() {
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            Garfield's Cheesy Haven
+            Urban Food
           </a>
           <button
             className="navbar-toggler"

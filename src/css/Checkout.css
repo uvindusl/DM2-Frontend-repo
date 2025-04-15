@@ -11,6 +11,10 @@
   width: 75%;
 }
 
+.checkout-h2 {
+  color: #73bba3;
+}
+
 .checkout-items {
   list-style-type: none;
   padding: 0;

@@ -16,7 +16,7 @@ function UpdateEmployee() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8082/employee-micro/employees/${id}`)
+      .get(`http://localhost:8080/urban-food/employees/${id}`)
       .then((response) => {
         const emp = response.data;
         setEmployee({
@@ -42,7 +42,7 @@ function UpdateEmployee() {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:8082/employee-micro/employees/${id}`, {
+      await axios.put(`http://localhost:8080/urban-food/employees/${id}`, {
         employeeName: employee.name,
         employeeAddress: employee.address,
         employeeTel: employee.telephone,

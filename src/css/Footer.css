@@ -1,5 +1,5 @@
 footer {
-  background-color: #ff8c00 !important;
+  background-color: #88d66c !important;
   padding: 20px;
 }
 .main-container {
@@ -43,7 +43,7 @@ h4 {
   font-weight: bold;
   letter-spacing: 0.3 px;
   text-transform: uppercase;
-  color: #5f361a;
+  color: #ffcf50;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
 }
 .custom-a {
@@ -69,7 +69,7 @@ p {
 }
 
 .bottom p {
-  background-color: #ff8c00;
+  background-color: #88d66c;
   text-align: center;
   font-size: 14px;
   color: #433e3e;

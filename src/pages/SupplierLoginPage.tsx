@@ -1,41 +1,43 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import LoginForm from "../components/LoginForm";
+import LoginForm from "../components/supplierLoginForm";
 import "../css/LoginPage.css";
 import axios from "axios";
 import CustomerLoginHeader from "../components/CustomerLoginHeader";
 
 interface Customer {
-  customerId: number;
-  customerName: string;
-  customerAddress: string;
-  customerTel: number;
+  supplierId: number;
+  supplierName: string;
+  supplierAddress: string;
+  supplierTel: number;
+  supplierCompany: string;
+  supplierPassword: string;
 }
 
-function LoginPage() {
-  const [customer, setCustomer] = useState<Customer | null>(null);
+function SupplierLoginPage() {
+  const [customer, setsupplier] = useState<Customer | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const handleLogin = (username: string, tel: number) => {
-    const apiUrl = `http://localhost:8080/urban-food/customers/login`;
+  const handleLogin = (username: string, password: string) => {
+    const apiUrl = "http://localhost:8080/urban-food/suppliers/login";
 
     setLoading(true);
     setError(null);
 
     axios
       .post(apiUrl, {
-        customerName: username,
-        customerTel: tel,
+        suppliername: username,
+        supplierpassword: password,
       })
       .then((response) => {
         if (response.status === 200) {
           //HTTP 200 status is scuccessful connect with the server and send data
           const customerid = response.data;
-          setCustomer(response.data);
-          navigate("/Home"); // Ensure this matches the route defined in your router
+          setsupplier(response.data);
+          navigate("/supplier/dashboard"); // Ensure this matches the route defined in your router
 
           //stroe the customer id
           sessionStorage.setItem(
@@ -62,7 +64,7 @@ function LoginPage() {
   };
 
   const handleSignUp = (username: string, address: string, tel: number) => {
-    const apiUrl = "http://localhost:8080/urban-food/customers";
+    const apiUrl = "http://localhost:8080/customer-micro/customers";
 
     setLoading(true);
     setError(null);
@@ -77,8 +79,8 @@ function LoginPage() {
         if (response.status === 200) {
           // HTTP 201 indicates resource creation
           const newCustomer = response.data;
-          setCustomer(newCustomer);
-          navigate("/Home");
+          setsupplier(newCustomer);
+          navigate("/supplier/dashboard");
 
           //stroe the customer id
           sessionStorage.setItem(
@@ -124,4 +126,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default SupplierLoginPage;

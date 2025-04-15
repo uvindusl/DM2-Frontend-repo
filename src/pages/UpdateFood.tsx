@@ -23,7 +23,7 @@ const UpdateFood: React.FC = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:8081/food-micro/foods/${id}`).then((res) => {
+    axios.get(`http://localhost:8080/urban-foodfoods/${id}`).then((res) => {
       setFood(res.data);
       setPreview(
         res.data.picture ? `data:image/jpeg;base64,${res.data.picture}` : null
@@ -41,7 +41,7 @@ const UpdateFood: React.FC = () => {
 
     try {
       await axios.put(
-        `http://localhost:8081/food-micro/foods/${id}`,
+        `http://localhost:8080/urban-food/foods/${id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
