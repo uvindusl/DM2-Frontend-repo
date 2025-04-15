@@ -21,24 +21,27 @@ function EmployeeLoginPage() {
   const navigate = useNavigate();
 
   const handleLogin = (username: string, password: string) => {
-    const apiUrl = `http://localhost:8082/employee-micro/employees?name=${username}&password=${password}`;
+    const apiUrl = "http://localhost:8080/urban-food/employees/login";
 
     setLoading(true);
     setError(null);
 
     axios
-      .get(apiUrl)
+      .post(apiUrl, {
+        employeeName: username,
+        employeePassword: password,
+      })
       .then((response) => {
         if (response.status === 200) {
-          //HTTP 200 status is scuccessful connect with the server and send data
-          const employeeid = response.data;
-          setemployee(response.data);
+          // HTTP 200 status is successful connect with the server and send data
+          const employeeData = response.data;
+          setemployee(employeeData);
           navigate("/employee/dashboard");
 
-          //stroe the employee id
+          // Store the employee id
           sessionStorage.setItem(
             "employeeId",
-            employeeid.employeeId.toString()
+            employeeData.employeeId.toString()
           );
         }
       })
@@ -46,7 +49,7 @@ function EmployeeLoginPage() {
         console.error("Error during login:", error);
         if (error.response) {
           if (error.response.status === 404) {
-            setError("employee not found. Please check your credentials.");
+            setError("Employee not found. Please check your credentials.");
           } else {
             setError("Login failed. Please try again later.");
           }
