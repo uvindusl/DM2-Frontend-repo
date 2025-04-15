@@ -29,8 +29,8 @@ function SupplierLoginPage() {
 
     axios
       .post(apiUrl, {
-        suppliername: username,
-        supplierpassword: password,
+        name: username,
+        password: password,
       })
       .then((response) => {
         if (response.status === 200) {
