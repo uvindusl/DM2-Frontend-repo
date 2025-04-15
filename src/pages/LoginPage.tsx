@@ -20,13 +20,16 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleLogin = (username: string, tel: number) => {
-    const apiUrl = `http://localhost:8080/customer-micro/customers?name=${username}&tel=${tel}`;
+    const apiUrl = `http://localhost:8080/urban-food/customers/login`;
 
     setLoading(true);
     setError(null);
 
     axios
-      .get(apiUrl)
+      .post(apiUrl, {
+        customerName: username,
+        customerTel: tel,
+      })
       .then((response) => {
         if (response.status === 200) {
           //HTTP 200 status is scuccessful connect with the server and send data
@@ -59,7 +62,7 @@ function LoginPage() {
   };
 
   const handleSignUp = (username: string, address: string, tel: number) => {
-    const apiUrl = "http://localhost:8080/customer-micro/customers";
+    const apiUrl = "http://localhost:8080/urban-food/customers";
 
     setLoading(true);
     setError(null);

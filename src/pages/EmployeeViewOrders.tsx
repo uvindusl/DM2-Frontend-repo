@@ -108,7 +108,7 @@ function EmployeeViewOrders() {
         const customerDetailsTemp: Record<number, Customer> = {};
         for (const customerId of customerIdsSet) {
           const { data: customer } = await axios.get(
-            `http://localhost:8080/customer-micro/customers/${customerId}`
+            `http://localhost:8080/urban-food/customers/${customerId}`
           );
           console.log("Fetched customer:", customer);
 
