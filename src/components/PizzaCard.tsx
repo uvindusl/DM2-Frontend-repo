@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 interface Food {
-  id: number;
-  picture: string; // Base64 string for the image
-  name: string;
-  price: number;
+  foodId: number;
+  foodPic: string; // Base64 string for the image
+  foodName: string;
+  foodPrice: number;
 }
 
 interface PizzaCardProps {
@@ -14,26 +14,26 @@ interface PizzaCardProps {
 
 function PizzaCard({ food }: PizzaCardProps) {
   // Create a proper data URI from base64 string
-  const imageSource = food.picture
-    ? `data:image/jpeg;base64,${food.picture}`
+  const imageSource = food.foodPic
+    ? `data:image/jpeg;base64,${food.foodPic}`
     : "/placeholder.png";
 
   return (
     <StyledWrapper>
       <div className="card">
-        <Link to={`/food/${food.id}`}>
+        <Link to={`/food/${food.foodId}`}>
           <div className="card-image">
             <img
               src={imageSource}
-              alt={food.name}
+              alt={food.foodName}
               onError={(e) => {
                 e.currentTarget.src = "/placeholder.png";
               }}
             />
           </div>
           <div className="heading">
-            {food.name}
-            <div className="author">RS.{food.price}</div>
+            {food.foodName}
+            <div className="author">RS.{food.foodPrice}</div>
           </div>
         </Link>
       </div>

@@ -28,7 +28,7 @@ function FoodPage() {
       return;
     }
 
-    const apiUrl = `http://localhost:8081/food-micro/foods/${id}`;
+    const apiUrl = `http://localhost:8080/urban-food/foods/${id}`;
 
     setLoading(true);
     axios
