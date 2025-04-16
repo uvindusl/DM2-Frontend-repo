@@ -28,6 +28,7 @@ function FoodGrid({ food, handleDeleteClick }: FoodGridProps) {
         <div className="food-info">
           <h3 className="food-title">{food.foodName}</h3>
           <p className="food-description">{food.foodDescription}</p>
+          <p className="food-category">{food.foodCategory}</p>
         </div>
         <div className="food-price">
           <p>Rs. {food.foodPrice?.toFixed(2) ?? "0.00"}</p>
