@@ -87,6 +87,10 @@
   justify-content: center;
   align-items: center;
 }
+
+.food-edit-button :hover {
+  background-color: #0b7a0b;
+}
 .food-delete-button {
   background-color: #f70004;
   border: none;
