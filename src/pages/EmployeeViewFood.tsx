@@ -6,11 +6,13 @@ import Footer from "../components/Footer";
 import EmployeeNavBar from "../components/EmployeeNavBar";
 
 interface Food {
-  id: number;
-  name: string;
-  description: string;
-  picture: string;
-  price: number;
+  foodId: number;
+  foodName: string;
+  foodDescription: string;
+  foodPic: string;
+  foodPrice: number;
+  foodCategory: string;
+  foodSupplierId: number;
 }
 
 function EmployeeViewFood() {
@@ -18,9 +20,13 @@ function EmployeeViewFood() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const supplierId = sessionStorage.getItem("supplierId");
+
+  console.log("Supplier ID from session storage:", supplierId);
+
   const DeleteClick = async (id: number) => {
     try {
-      const apiUrl = `http://localhost:8081/food-micro/foods/${id}`;
+      const apiUrl = `http://localhost:8080/urban-food/foods/${id}`;
       await axios.delete(apiUrl);
       window.location.reload();
       console.log(apiUrl);
@@ -31,7 +37,7 @@ function EmployeeViewFood() {
   };
 
   useEffect(() => {
-    const apiUrl = "http://localhost:8081/food-micro/foods";
+    const apiUrl = `http://localhost:8080/urban-food/foods/supplier/${supplierId}`;
 
     setLoading(true);
     axios
@@ -65,7 +71,7 @@ function EmployeeViewFood() {
               console.log("Food in map:", food);
               return (
                 <FoodGrid
-                  key={food.id}
+                  key={food.foodId}
                   food={food}
                   handleDeleteClick={DeleteClick}
                 />
