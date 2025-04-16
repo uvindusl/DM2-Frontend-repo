@@ -6,7 +6,7 @@ import "../css/LoginPage.css";
 import axios from "axios";
 import CustomerLoginHeader from "../components/CustomerLoginHeader";
 
-interface Customer {
+interface Supplier {
   supplierId: number;
   supplierName: string;
   supplierAddress: string;
@@ -16,7 +16,7 @@ interface Customer {
 }
 
 function SupplierLoginPage() {
-  const [customer, setsupplier] = useState<Customer | null>(null);
+  const [supplier, setsupplier] = useState<Supplier | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -34,15 +34,15 @@ function SupplierLoginPage() {
       })
       .then((response) => {
         if (response.status === 200) {
-          //HTTP 200 status is scuccessful connect with the server and send data
-          const customerid = response.data;
+          //HTTP 200 status is successful connect with the server and send data
+          const supplierData = response.data; // Rename for clarity
           setsupplier(response.data);
           navigate("/supplier/dashboard"); // Ensure this matches the route defined in your router
 
-          //stroe the customer id
+          // Store the supplier ID in session storage
           sessionStorage.setItem(
-            "customerId",
-            customerid.customerId.toString()
+            "supplierId",
+            supplierData.id.toString() // Access the 'id' property
           );
         }
       })
@@ -63,7 +63,13 @@ function SupplierLoginPage() {
       });
   };
 
-  const handleSignUp = (username: string, address: string, tel: number) => {
+  const handleSignUp = (
+    username: string,
+    address: string,
+    tel: number,
+    company: string,
+    password: string
+  ) => {
     const apiUrl = "http://localhost:8080/urban-food/suppliers";
 
     setLoading(true);
@@ -74,6 +80,8 @@ function SupplierLoginPage() {
         name: username,
         address: address,
         tell: tel,
+        company: company,
+        password: password,
       })
       .then((response) => {
         if (response.status === 200) {
