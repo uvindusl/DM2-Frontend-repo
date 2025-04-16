@@ -136,7 +136,7 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
                 : "N/A"}
             </div>
 
-            <div className="product-info-label">Supplier Company</div>
+            <div className="product-info-label">Company</div>
             <div className="product-info-value">
               {loading
                 ? "Loading..."
