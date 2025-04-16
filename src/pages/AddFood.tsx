@@ -101,6 +101,7 @@ const AddFood: React.FC = () => {
                     onChange={(e) => setCategory(e.target.value)}
                     value={category}
                   >
+                    <option>Category</option>
                     <option>fruits</option>
                     <option>vegetables</option>
                     <option>dairy products</option>
