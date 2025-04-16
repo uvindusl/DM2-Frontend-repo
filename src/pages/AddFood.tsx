@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddFood: React.FC = () => {
   const [title, setTitle] = useState("");
-  // const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState<File | null>(null);
@@ -40,7 +40,7 @@ const AddFood: React.FC = () => {
     setLoading(true);
     const formData = new FormData();
     formData.append("name", title);
-    // formData.append("category", category);
+    formData.append("category", category);
     formData.append("description", description);
     formData.append("price", price);
     formData.append("picture", image);
@@ -89,8 +89,8 @@ const AddFood: React.FC = () => {
                     required
                   />
 
-                  {/* <select
-                    className="select-field"
+                  <select
+                    className="input-field"
                     required
                     onChange={(e) => setCategory(e.target.value)}
                     value={category}
@@ -100,7 +100,8 @@ const AddFood: React.FC = () => {
                     <option>dairy products</option>
                     <option>baked goods</option>
                     <option>handmade</option>
-                  </select> */}
+                  </select>
+
                   <textarea
                     placeholder="Description"
                     value={description}
