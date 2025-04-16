@@ -8,11 +8,13 @@ import axios from "axios";
 
 // Define the Food interface
 interface Food {
-  id: number;
-  picture: string; // Base64 string for the image
-  name: string;
-  price: number;
-  description: string;
+  foodId: number;
+  foodPic: string; // Base64 string for the image
+  foodName: string;
+  foodPrice: number;
+  foodDescription: string;
+  foodCategory: string;
+  foodSupId: number;
 }
 
 function FoodPage() {
@@ -35,11 +37,10 @@ function FoodPage() {
       .get(apiUrl)
       .then((response) => {
         if (response.status === 200) {
-          const foodid = response.data; //to store the food id
-          setFood(response.data);
+          const foodData = response.data; //to store the food data
+          setFood(foodData);
 
-          //store customer id in sessionstorage
-          sessionStorage.setItem("foodID", foodid.id.toString());
+          sessionStorage.setItem("foodID", foodData.foodId.toString());
           // console.log(id);
         } else if (response.status === 404) {
           setFood(null); // Food not found
