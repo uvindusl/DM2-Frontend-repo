@@ -17,6 +17,10 @@ const SupplierDashboard: React.FC = () => {
   const [searchTerm] = useState("");
   const navigate = useNavigate();
 
+  const supplierId = sessionStorage.getItem("supplierId");
+
+  console.log("Supplier ID from session storage:", supplierId);
+
   const dashboardTiles: DashboardTile[] = [
     {
       title: "Manage Foods",

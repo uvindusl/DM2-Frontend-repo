@@ -14,6 +14,10 @@ const AddFood: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const supplierId = sessionStorage.getItem("supplierId");
+
+  console.log("Supplier ID from session storage:", supplierId);
+
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -39,11 +43,12 @@ const AddFood: React.FC = () => {
 
     setLoading(true);
     const formData = new FormData();
-    formData.append("name", title);
-    formData.append("category", category);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("picture", image);
+    formData.append("foodName", title);
+    formData.append("foodCategory", category);
+    formData.append("foodDescription", description);
+    formData.append("foodPrice", price);
+    formData.append("foodPic", image);
+    formData.append("foodSupplierId", supplierId!);
 
     try {
       const response = await fetch("http://localhost:8080/urban-food/foods", {
