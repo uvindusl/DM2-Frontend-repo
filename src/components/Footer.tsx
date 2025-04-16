@@ -1,5 +1,5 @@
 import "../css/Footer.css";
-import Garfieldpic from "../../src/assets/vegetables.png";
+import Garfieldpic from "../../src/assets/PngItem_1507350.png";
 import instagram from "../../src/assets/instagram.png";
 import facebook from "../../src/assets/facebook.png";
 import twitter from "../../src/assets/twitter.png";
