@@ -108,7 +108,7 @@ input::placeholder {
 .image-box {
   width: 220px;
   height: 210px;
-  border: 2px dashed #c97e3b;
+  border: 2px dashed #88d66c;
   display: flex;
   justify-content: center;
   align-items: center;
