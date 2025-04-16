@@ -62,6 +62,7 @@ const AddFood: React.FC = () => {
         setTitle("");
         setDescription("");
         setPrice("");
+        setCategory("");
         setImage(null);
         setPreview(null);
       } else {
