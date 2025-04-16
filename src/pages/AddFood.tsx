@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddFood: React.FC = () => {
   const [title, setTitle] = useState("");
+  // const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState<File | null>(null);
@@ -39,12 +40,13 @@ const AddFood: React.FC = () => {
     setLoading(true);
     const formData = new FormData();
     formData.append("name", title);
+    // formData.append("category", category);
     formData.append("description", description);
     formData.append("price", price);
     formData.append("picture", image);
 
     try {
-      const response = await fetch("http://localhost:8081/food-micro/foods", {
+      const response = await fetch("http://localhost:8080/urban-food/foods", {
         method: "POST",
         body: formData,
       });
@@ -87,6 +89,18 @@ const AddFood: React.FC = () => {
                     required
                   />
 
+                  {/* <select
+                    className="select-field"
+                    required
+                    onChange={(e) => setCategory(e.target.value)}
+                    value={category}
+                  >
+                    <option>fruits</option>
+                    <option>vegetables</option>
+                    <option>dairy products</option>
+                    <option>baked goods</option>
+                    <option>handmade</option>
+                  </select> */}
                   <textarea
                     placeholder="Description"
                     value={description}
