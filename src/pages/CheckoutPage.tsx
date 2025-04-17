@@ -39,7 +39,6 @@ function CheckoutPage() {
         {
           orderTotalPrice: totalAmount,
           orderCustomerId: customerId,
-          orderStatus: "Pending",
         }
       );
       const orderId = orderRes.data?.id;
@@ -54,6 +53,7 @@ function CheckoutPage() {
             qty: item.qty,
             orderId: orderId,
             supplierId: item.supplierId,
+            status: "Pending",
           };
           console.log("Suborder Payload:", suborderPayload);
           await axios.post(
