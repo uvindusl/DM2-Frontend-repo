@@ -68,21 +68,18 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
       setaddtocartloading(true);
       try {
         const total = food.foodPrice * count;
-        const response = await fetch(
-          "http://localhost:8083/order-micro/carts",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              customerId: customerid,
-              foodId: food.foodId,
-              quantity: count,
-              subTotal: total,
-            }),
-          }
-        );
+        const response = await fetch("http://localhost:8080/urban-food/carts", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            customerId: customerid,
+            foodId: food.foodId,
+            qty: count,
+            subTotal: total,
+          }),
+        });
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
