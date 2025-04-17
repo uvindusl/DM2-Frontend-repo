@@ -1,0 +1,24 @@
+.order-review-card-container {
+  min-height: 600px;
+}
+
+.order-review-card {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  background-image: radial-gradient(transparent, #b4e380);
+  align-items: center;
+  width: 800px;
+  border-radius: 25px;
+  margin: 40px;
+}
+
+.detail {
+  align-self: start;
+  margin-top: 10px;
+  margin-left: 50px;
+}
+
+body {
+  background-image: url("../assets/background-DM2.jpg");
+}
