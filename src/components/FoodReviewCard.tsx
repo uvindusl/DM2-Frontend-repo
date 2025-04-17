@@ -1,4 +1,4 @@
-import "../css/FoodReviewCard.css"; // Assuming you have a CSS file for styling
+import "../css/FoodReviewCard.css";
 
 function FoodReviewCard() {
   return (
