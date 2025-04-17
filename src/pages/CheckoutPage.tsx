@@ -2,6 +2,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import "../css/Checkout.css";
+import NavBar from "../components/navBar";
+import Footer from "../components/Footer";
 
 interface CartItemForCheckout {
   cartId: number;
@@ -87,17 +90,36 @@ function CheckoutPage() {
   };
 
   return (
-    <div className="checkout-page">
-      <h2>Checkout</h2>
-      <ul>
-        {cartItems.map((item) => (
-          <li key={item.foodId}>
-            {item.foodName} - Qty: {item.qty} - Rs. {item.foodPrice * item.qty}
-          </li>
-        ))}
-      </ul>
-      <h3>Total: Rs. {totalAmount.toFixed(2)}</h3>
-      <button onClick={handlePayment}>Proceed to Payment</button>
+    <div>
+      <NavBar />
+      <div className="checkout-page">
+        <h2 className="checkout-h2">Checkout</h2>
+        <div className="checkout-container1 ">
+          <div className="checkout-details">
+            <ul className="checkout-list1">
+              {cartItems.map((item) => (
+                <div className="food-card">
+                  <li key={item.foodId}>
+                    <div className="name"> {item.foodName}</div>
+
+                    <div> Rs. {item.foodPrice * item.qty}</div>
+                  </li>
+                  <div className="qty"> Qty: {item.qty}</div>
+                </div>
+              ))}
+            </ul>
+            <div className="total-card">
+              <h3>Total: Rs. {totalAmount.toFixed(2)}</h3>
+              <button className="proceed-btn" onClick={handlePayment}>
+                Proceed to Payment
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="footer1">
+        <Footer />
+      </div>
     </div>
   );
 }

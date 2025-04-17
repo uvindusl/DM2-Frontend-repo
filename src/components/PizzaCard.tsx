@@ -5,6 +5,7 @@ interface Food {
   foodId: number;
   foodPic: string; // Base64 string for the image
   foodName: string;
+  foodCategory: string;
   foodPrice: number;
 }
 
@@ -33,7 +34,9 @@ function PizzaCard({ food }: PizzaCardProps) {
           </div>
           <div className="heading">
             {food.foodName}
-            <div className="author">RS.{food.foodPrice}</div>
+            <br />
+            {food.foodCategory}
+            <p className="author">RS.{food.foodPrice}</p>
           </div>
         </Link>
       </div>

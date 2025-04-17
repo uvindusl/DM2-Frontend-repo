@@ -19,6 +19,7 @@ import SupplierLoginPage from "./pages/SupplierLoginPage";
 import SupplierDashboard from "./pages/SupplierDashborad";
 import SupplierViewFood from "./pages/SupplierViewFood";
 import CustomerProfile from "./pages/CustomerProfile";
+import CustomerReview from "./pages/CustomerReview";
 import SupplierProfile from "./pages/SupplierProfile";
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
           <Route path="/supplier/dashboard" element={<SupplierDashboard />} />
           <Route path="/supplier/view/foods" element={<SupplierViewFood />} />
           <Route path="/customer/profile" element={<CustomerProfile />} />
+          <Route path="/customer/reviews" element={<CustomerReview />} />
           <Route path="/supplier/profile" element={<SupplierProfile />} />
         </Routes>
       </main>
