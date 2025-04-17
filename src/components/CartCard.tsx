@@ -1,5 +1,5 @@
+// src/components/CartCard.tsx
 import "../css/CartCard.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 interface Cart {
@@ -9,8 +9,9 @@ interface Cart {
   foodPic: string;
   qty: number;
   subtotal: number;
-  cartId: number;
+  id: number;
   customerId: number;
+  supplierId?: number; // Assuming supplierId might come from the cart item
 }
 
 interface CartCardProps {
@@ -24,25 +25,20 @@ function CartCard({ cart, handleSingleDelete }: CartCardProps) {
     : "/placeholder.png";
   const navigate = useNavigate();
 
-  const handleSingleCheckout = async () => {
-    try {
-      await axios.post("http://localhost:8080/urban-food/suborders", {
-        customerId: cart.customerId,
-        foodId: Number(cart.foodId),
-        quantity: cart.qty,
-      });
-
-      await axios.delete(
-        `http://localhost:8080/urban-food/carts?cartId=${cart.cartId}`
-      );
-
-      handleSingleDelete(cart.cartId);
-
-      navigate("/checkout");
-    } catch (error) {
-      console.error("Single item checkout error", error);
-      alert("Failed to checkout this item. Please try again.");
-    }
+  const handleSingleCheckout = () => {
+    const cartItem = {
+      foodId: Number(cart.foodId),
+      foodName: cart.foodName,
+      foodDescription: cart.foodDescription,
+      foodPic: cart.foodPic,
+      foodPrice: cart.subtotal / cart.qty,
+      qty: cart.qty,
+      subTotal: cart.subtotal,
+      customerId: cart.customerId,
+      cartId: cart.id,
+      supplierId: cart.supplierId, // Include supplierId here
+    };
+    navigate("/checkout", { state: { cartItems: [cartItem] } });
   };
 
   return (
@@ -63,14 +59,14 @@ function CartCard({ cart, handleSingleDelete }: CartCardProps) {
           <p className="cart-description">{cart.foodDescription}</p>
           <div className="cart-meta">
             <p className="cart-qty">Qty {cart.qty}</p>
-            <p>Price RS. {cart.subtotal?.toFixed(2) ?? "0.00"}</p>
+            <p>Price Rs. {cart.subtotal.toFixed(2)}</p>
           </div>
         </div>
 
         <div className="cart-actions">
           <button
             className="cart-delete-button"
-            onClick={() => handleSingleDelete(cart.cartId)}
+            onClick={() => handleSingleDelete(cart.id)}
           >
             <img src="../src/assets/delete.svg" alt="Delete" />
           </button>
