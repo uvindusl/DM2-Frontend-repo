@@ -10,16 +10,18 @@ interface CartItem {
   cartId: number;
   customerId: number;
   foodId: number;
-  quantity: number;
+  qty: number;
   subTotal: number;
 }
 
 interface FoodItem {
-  id: number;
-  fid: number;
-  picture: string;
-  name: string;
-  description: string;
+  foodId: number; // Changed 'id' to 'foodId'
+  foodPic: string;
+  foodName: string;
+  foodDescription: string;
+  foodPrice: number;
+  foodCategory: string;
+  foodSupId: number;
 }
 
 function CartPage() {
@@ -40,11 +42,14 @@ function CartPage() {
     const fetchCartData = async () => {
       try {
         const cartResponse = await axios.get(
-          `http://localhost:8083/order-micro/carts/${customerid}`
+          `http://localhost:8080/urban-food/carts/${customerid}`
         );
+
+        console.log("Cart API Response:", cartResponse);
 
         if (cartResponse.status === 200) {
           setCart(cartResponse.data);
+          console.log("Cart Data:", cartResponse.data);
           fetchFoodDetails(cartResponse.data);
         } else if (cartResponse.status === 204) {
           setCart([]);
@@ -67,17 +72,30 @@ function CartPage() {
 
     const fetchFoodDetails = async (cartItems: CartItem[]) => {
       try {
+        console.log("Fetching food details for cart items:", cartItems);
         const foodPromises = cartItems.map((item) =>
           axios
-            .get(`http://localhost:8081/food-micro/foods/${item.foodId}`)
-            .then((res) => res.data)
-            .catch(() => null)
+            .get(`http://localhost:8080/urban-food/foods/${item.foodId}`)
+            .then((res) => {
+              console.log(`Food API Response for foodId ${item.foodId}:`, res);
+              return res.data;
+            })
+            .catch((err) => {
+              console.error(
+                `Error fetching food details for foodId ${item.foodId}:`,
+                err
+              );
+              return null;
+            })
         );
 
         const foodDetails = (await Promise.all(foodPromises)).filter(
-          Boolean
+          (item) => item !== null && item !== undefined
         ) as FoodItem[];
+        console.log("Fetched Food Details:", foodDetails);
+        console.log("Food Details Before Set:", foodDetails); // Added log
         setFood(foodDetails);
+        console.log("Food State Updated:", food);
       } catch (error) {
         console.error("Error fetching food details:", error);
       }
@@ -88,7 +106,7 @@ function CartPage() {
 
   const DeleteAll = async (customerId: number) => {
     try {
-      const apiUrl = `http://localhost:8083/order-micro/carts/byCustomerId/${customerId}`;
+      const apiUrl = `http://localhost:8080/urban-food/carts?customerId=${customerId}`;
       await axios.delete(apiUrl);
       window.location.reload();
     } catch (error) {
@@ -113,11 +131,11 @@ function CartPage() {
         const orderData = {
           customerId: customerid,
           foodId: item.foodId,
-          quantity: item.quantity,
+          qty: item.qty,
         };
 
         return axios.post(
-          "http://localhost:8083/order-micro/suborders",
+          "http://localhost:8080/urban-food/suborders",
           orderData
         );
       });
@@ -167,14 +185,24 @@ function CartPage() {
                   </button>
                 </div>
               </div>
-              {cart.map((cartItem) => {
+              {cart.map((cartItem, index) => {
                 const foodItem = food.find(
-                  (f) => Number(f.id) === Number(cartItem.foodId)
+                  (f) => Number(f.foodId) === Number(cartItem.foodId)
+                );
+
+                console.log(
+                  "Cart Item:",
+                  cartItem,
+                  "Found Food Item:",
+                  foodItem
                 );
 
                 if (!foodItem) {
                   return (
-                    <div key={cartItem.cartId} className="cart-card">
+                    <div
+                      key={`missing-${cartItem.cartId ?? `i${index}`}`}
+                      className="cart-card"
+                    >
                       <p>
                         Food details not available for food ID {cartItem.foodId}
                       </p>
@@ -184,13 +212,13 @@ function CartPage() {
 
                 return (
                   <CartCard
-                    key={cartItem.cartId}
+                    key={cartItem.cartId ?? `cart-i${index}`}
                     cart={{
-                      foodid: cartItem.foodId.toString(),
-                      foodname: foodItem.name,
-                      fooddescription: foodItem.description,
-                      foodimg: foodItem.picture,
-                      qty: cartItem.quantity,
+                      foodId: cartItem.foodId.toString(),
+                      foodName: foodItem.foodName,
+                      foodDescription: foodItem.foodDescription,
+                      foodPic: foodItem.foodPic,
+                      qty: cartItem.qty,
                       subtotal: cartItem.subTotal ?? 0,
                       cartId: cartItem.cartId,
                       customerId: cartItem.customerId,
