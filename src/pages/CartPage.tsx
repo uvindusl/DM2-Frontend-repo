@@ -21,7 +21,7 @@ interface FoodItem {
   foodName: string;
   foodDescription: string;
   foodPrice: number;
-  supplierId?: number; // Assuming supplierId comes from the food item
+  foodSupId?: number; // Corrected property name to match backend
 }
 
 function CartPage() {
@@ -61,19 +61,27 @@ function CartPage() {
   }, [customerId]);
 
   const handleCheckout = () => {
-    const cartWithFood = cart.map((item, index) => {
-      const foodItem = food.find((f) => f.foodId === item.foodId);
+    const cartWithFoodPromises = cart.map(async (item) => {
+      const foodItemResponse = await axios.get(
+        `http://localhost:8080/urban-food/foods/${item.foodId}`
+      );
+      const foodItem = foodItemResponse.data;
+      console.log("Fetched Food Item Response Data:", foodItem);
+      console.log("Fetched Food Item for Checkout:", foodItem);
       return {
         ...item,
         foodName: foodItem?.foodName || "",
         foodDescription: foodItem?.foodDescription || "",
         foodPic: foodItem?.foodPic || "",
         foodPrice: foodItem?.foodPrice || 0,
-        supplierId: foodItem?.supplierId, // Include supplierId
+        supplierId: foodItem?.foodSupId, // Corrected property name
       };
     });
-    console.log("Cart Items before checkout:", cartWithFood);
-    navigate("/checkout", { state: { cartItems: cartWithFood } });
+
+    Promise.all(cartWithFoodPromises).then((resolvedCartWithFood) => {
+      console.log("Cart Items before checkout:", resolvedCartWithFood);
+      navigate("/checkout", { state: { cartItems: resolvedCartWithFood } });
+    });
   };
 
   const handleSingleDelete = async (cartId: number) => {
@@ -111,7 +119,7 @@ function CartPage() {
                       subtotal: item.subTotal,
                       id: item.id,
                       customerId: item.customerId,
-                      supplierId: foodItem.supplierId, // Pass supplierId to CartCard
+                      supplierId: foodItem.foodSupId, // Corrected property name
                     }}
                     handleSingleDelete={handleSingleDelete}
                   />

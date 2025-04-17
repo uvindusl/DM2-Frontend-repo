@@ -1,3 +1,4 @@
+// src/pages/CheckoutPage.tsx
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
@@ -30,7 +31,7 @@ function CheckoutPage() {
       );
 
       console.log("Order Response:", orderRes);
-      const orderId = orderRes.data?.id; // Correctly access the order ID
+      const orderId = orderRes.data?.id;
       console.log("Generated Order ID:", orderId);
 
       if (orderId) {

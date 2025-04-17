@@ -11,7 +11,7 @@ interface Cart {
   subtotal: number;
   id: number;
   customerId: number;
-  supplierId?: number; // Assuming supplierId might come from the cart item
+  supplierId?: number;
 }
 
 interface CartCardProps {
@@ -36,7 +36,7 @@ function CartCard({ cart, handleSingleDelete }: CartCardProps) {
       subTotal: cart.subtotal,
       customerId: cart.customerId,
       cartId: cart.id,
-      supplierId: cart.supplierId, // Include supplierId here
+      supplierId: cart.supplierId,
     };
     navigate("/checkout", { state: { cartItems: [cartItem] } });
   };
