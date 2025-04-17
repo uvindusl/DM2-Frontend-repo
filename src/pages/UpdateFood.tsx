@@ -50,7 +50,7 @@ const UpdateFood: React.FC = () => {
         }
       );
       alert("Food updated!");
-      navigate("/employee/view/foods");
+      navigate("/supplier/view/foods");
     } catch (error) {
       console.error("Error updating food:", error);
       alert("Failed to update food.");

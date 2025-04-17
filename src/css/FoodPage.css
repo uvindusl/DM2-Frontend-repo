@@ -22,7 +22,7 @@
   width: 100%;
   max-width: 600px;
   padding: 12px 20px;
-  border: 2px solid #ff8c00;
+  border: 2px solid #4caf50;
   border-radius: 25px;
   font-size: 16px;
   outline: none;
@@ -107,7 +107,7 @@
 .product-info-value:first-of-type {
   font-size: 28px;
   font-weight: 700;
-  color: #ff8c00;
+  color: #4caf50;
   margin-bottom: 25px;
 }
 
