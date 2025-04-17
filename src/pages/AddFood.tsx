@@ -6,12 +6,17 @@ import { useNavigate } from "react-router-dom";
 
 const AddFood: React.FC = () => {
   const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const supplierId = sessionStorage.getItem("supplierId");
+
+  console.log("Supplier ID from session storage:", supplierId);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -38,13 +43,15 @@ const AddFood: React.FC = () => {
 
     setLoading(true);
     const formData = new FormData();
-    formData.append("name", title);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("picture", image);
+    formData.append("foodName", title);
+    formData.append("foodCategory", category);
+    formData.append("foodDescription", description);
+    formData.append("foodPrice", price);
+    formData.append("foodPic", image);
+    formData.append("foodSupplierId", supplierId!);
 
     try {
-      const response = await fetch("http://localhost:8081/food-micro/foods", {
+      const response = await fetch("http://localhost:8080/urban-food/foods", {
         method: "POST",
         body: formData,
       });
@@ -55,6 +62,7 @@ const AddFood: React.FC = () => {
         setTitle("");
         setDescription("");
         setPrice("");
+        setCategory("");
         setImage(null);
         setPreview(null);
       } else {
@@ -86,6 +94,20 @@ const AddFood: React.FC = () => {
                     className="input-field"
                     required
                   />
+
+                  <select
+                    className="input-field"
+                    required
+                    onChange={(e) => setCategory(e.target.value)}
+                    value={category}
+                  >
+                    <option>Category</option>
+                    <option>fruits</option>
+                    <option>vegetables</option>
+                    <option>dairy products</option>
+                    <option>baked goods</option>
+                    <option>handmade</option>
+                  </select>
 
                   <textarea
                     placeholder="Description"

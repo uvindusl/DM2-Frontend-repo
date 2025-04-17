@@ -1,8 +1,8 @@
 :root {
-  --primary-orange: #ff7722;
+  --primary-orange: #4caf50;
   --light-orange: #fff3e8;
-  --dark-orange: #cc5500;
-  --accent-orange: #ff9f5a;
+  --dark-orange: rgb(0, 204, 41);
+  --accent-orange: #4caf50;
   --text-dark: #333333;
   --text-light: #ffffff;
   --background-light: #fafafa;
@@ -201,7 +201,7 @@
 }
 
 .markComplete {
-  background-color: orange;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 0.5rem 1rem;

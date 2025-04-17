@@ -1,10 +1,10 @@
 .add-food-container {
-  --input-focus: #ff8c00;
+  --input-focus: #4caf50;
   --font-color: #333;
   --font-color-sub: #666;
   --bg-color: #fff;
   --bg-color-alt: #666;
-  --main-color: #ff5722;
+  --main-color: #4caf50;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,17 +42,17 @@ input::placeholder {
 } */
 
 .form-title {
-  margin: 20px 0 20px 0;
+  margin: 20px 0 40px 0;
   font-size: 25px;
   font-weight: 900;
   text-align: center;
-  color: var(--main-color);
+  color: white;
 }
 .page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-image: url("../assets/background_imresizer.jpg");
+  background-image: url("../assets/background-DM2.jpg");
 }
 /* Form layout */
 .form-content {
@@ -89,7 +89,7 @@ input::placeholder {
 .textarea-field {
   padding: 8px;
   margin-bottom: 10px;
-  border: 1px solid #c97e3b;
+  border: 1px solid #4caf50;
   border-radius: 4px;
   outline: none;
   background-color: #ffffff;
@@ -108,7 +108,7 @@ input::placeholder {
 .image-box {
   width: 220px;
   height: 210px;
-  border: 2px dashed #c97e3b;
+  border: 2px dashed #88d66c;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -149,7 +149,7 @@ input::placeholder {
   height: 40px;
   border-radius: 5px;
   border: 2px solid var(--main-color);
-  background-color: #ffab91;
+  background-color: #d3ff91;
   box-shadow: 4px 4px var(--main-color);
   font-size: 17px;
   font-weight: 600;
@@ -174,7 +174,7 @@ input::placeholder {
 }
 
 .save-button:hover {
-  background-color: #ff6a00;
+  background-color: #4caf50;
 }
 
 .cancel-button:hover {

@@ -7,10 +7,10 @@ import "../css/HomePage.css";
 import axios from "axios";
 
 interface Food {
-  id: number;
-  picture: string;
-  name: string;
-  price: number;
+  foodId: number;
+  foodPic: string;
+  foodName: string;
+  foodPrice: number;
 }
 
 function HomePage() {
@@ -24,7 +24,7 @@ function HomePage() {
 
   const fetchFoods = (query: string = "") => {
     setLoading(true);
-    const apiUrl = `http://localhost:8081/food-micro/foods/search?name=${query}`;
+    const apiUrl = `http://localhost:8080/urban-food/foods/search?name=${query}`;
 
     axios
       .get(apiUrl)
@@ -66,7 +66,7 @@ function HomePage() {
         ) : (
           <div className="food-grid">
             {foods.map((food) => (
-              <PizzaCard key={food.id} food={food} />
+              <PizzaCard key={food.foodId} food={food} />
             ))}
           </div>
         )}

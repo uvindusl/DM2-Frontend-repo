@@ -2,23 +2,29 @@ import React from "react";
 import "./../css/Checkout.css"; // Import CSS if needed
 
 interface CartItemProps {
-  image: string;
-  name: string;
-  description: string;
-  price: number;
-  quantity: number;
+  foodPic: string;
+  foodName: string;
+  foodDescription: string;
+  foodPrice: number;
+  qty: number;
 }
 
-const CartItems: React.FC<CartItemProps> = ({ image, name, description, price, quantity }) => {
+const CartItems: React.FC<CartItemProps> = ({
+  foodPic,
+  foodName,
+  foodDescription,
+  foodPrice,
+  qty,
+}) => {
   return (
     <div className="cart-item">
-      <img src={image} alt={name} className="item-image" />
+      <img src={foodPic} alt={foodName} className="item-image" />
       <div className="item-details">
-        <h4>{name}</h4>
-        <p>{description}</p>
-        <p>Rs. {price}</p>
+        <h4>{foodName}</h4>
+        <p>{foodDescription}</p>
+        <p>Rs. {foodPrice}</p>
       </div>
-      <div className="item-qty">QTY: {quantity}</div>
+      <div className="item-qty">QTY: {qty}</div>
     </div>
   );
 };

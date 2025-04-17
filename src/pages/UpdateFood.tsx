@@ -10,10 +10,11 @@ const UpdateFood: React.FC = () => {
   const navigate = useNavigate();
 
   const [food, setFood] = useState({
-    name: "",
-    description: "",
-    price: "",
-    picture: "",
+    foodName: "",
+    foodDescription: "",
+    foodPrice: "",
+    foodPic: "",
+    foodCategory: "",
   });
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
@@ -23,7 +24,7 @@ const UpdateFood: React.FC = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/urban-foodfoods/${id}`).then((res) => {
+    axios.get(`http://localhost:8080/urban-food/foods/${id}`).then((res) => {
       setFood(res.data);
       setPreview(
         res.data.picture ? `data:image/jpeg;base64,${res.data.picture}` : null
@@ -34,10 +35,11 @@ const UpdateFood: React.FC = () => {
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("name", food.name);
-    formData.append("description", food.description);
-    formData.append("price", food.price);
-    if (image) formData.append("picture", image);
+    formData.append("foodName", food.foodName);
+    formData.append("foodDescription", food.foodDescription);
+    formData.append("foodPrice", food.foodPrice);
+    formData.append("foodCategory", food.foodCategory);
+    if (image) formData.append("foodPic", image);
 
     try {
       await axios.put(
@@ -48,7 +50,7 @@ const UpdateFood: React.FC = () => {
         }
       );
       alert("Food updated!");
-      navigate("/employee/view/foods");
+      navigate("/supplier/view/foods");
     } catch (error) {
       console.error("Error updating food:", error);
       alert("Failed to update food.");
@@ -65,16 +67,31 @@ const UpdateFood: React.FC = () => {
             <label>Title:</label>
             <input
               type="text"
-              value={food.name}
-              onChange={(e) => setFood({ ...food, name: e.target.value })}
+              value={food.foodName}
+              onChange={(e) => setFood({ ...food, foodName: e.target.value })}
               required
             />
+            <label>Category:</label>
+            <select
+              className="input-field"
+              required
+              onChange={(e) =>
+                setFood({ ...food, foodCategory: e.target.value })
+              }
+              value={food.foodCategory}
+            >
+              <option value="fruits">fruits</option>
+              <option value="vegetables">vegetables</option>
+              <option value="dairy products">dairy products</option>
+              <option value="baked goods">baked goods</option>
+              <option value="handmade">handmade</option>
+            </select>
 
             <label>Description:</label>
             <textarea
-              value={food.description}
+              value={food.foodDescription}
               onChange={(e) =>
-                setFood({ ...food, description: e.target.value })
+                setFood({ ...food, foodDescription: e.target.value })
               }
               required
             ></textarea>
@@ -82,8 +99,8 @@ const UpdateFood: React.FC = () => {
             <label>Price:</label>
             <input
               type="number"
-              value={food.price}
-              onChange={(e) => setFood({ ...food, price: e.target.value })}
+              value={food.foodPrice}
+              onChange={(e) => setFood({ ...food, foodPrice: e.target.value })}
               required
             />
 

@@ -19,12 +19,12 @@ const EmployeeDashboard: React.FC = () => {
 
   const dashboardTiles: DashboardTile[] = [
     {
-      title: "Manage Foods",
-      description: "Update and Delete Foods",
+      title: "view Foods",
+      description: "",
       icon: "🍕",
       route: "/employee/view/foods",
-      routeAdd: "/employee/add/food",
-      buttonName: " foods",
+      routeAdd: "",
+      buttonName: "",
     },
     {
       title: "Manage Employees",
@@ -33,14 +33,6 @@ const EmployeeDashboard: React.FC = () => {
       route: "/employee/view/employees",
       routeAdd: "/employee/add/employee",
       buttonName: " employees",
-    },
-    {
-      title: "View Orders",
-      description: "View Order History and Update Status",
-      icon: "📦",
-      route: "/employee/view/orders",
-      routeAdd: "",
-      buttonName: "",
     },
   ];
 

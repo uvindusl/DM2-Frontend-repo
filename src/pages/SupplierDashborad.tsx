@@ -17,13 +17,17 @@ const SupplierDashboard: React.FC = () => {
   const [searchTerm] = useState("");
   const navigate = useNavigate();
 
+  const supplierId = sessionStorage.getItem("supplierId");
+
+  console.log("Supplier ID from session storage:", supplierId);
+
   const dashboardTiles: DashboardTile[] = [
     {
       title: "Manage Foods",
       description: "Update and Delete Foods",
       icon: "🍕",
-      route: "/employee/view/foods",
-      routeAdd: "/employee/add/food",
+      route: "/supplier/view/foods",
+      routeAdd: "/supplier/add/food",
       buttonName: " foods",
     },
     {

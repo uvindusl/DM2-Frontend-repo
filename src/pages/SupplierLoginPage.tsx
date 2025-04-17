@@ -34,15 +34,15 @@ function SupplierLoginPage() {
       })
       .then((response) => {
         if (response.status === 200) {
-          //HTTP 200 status is scuccessful connect with the server and send data
-          const customerid = response.data;
+          //HTTP 200 status is successful connect with the server and send data
+          const supplierData = response.data; // Rename for clarity
           setsupplier(response.data);
           navigate("/supplier/dashboard"); // Ensure this matches the route defined in your router
 
-          //stroe the customer id
+          // Store the supplier ID in session storage
           sessionStorage.setItem(
-            "customerId",
-            customerid.customerId.toString()
+            "supplierId",
+            supplierData.id.toString() // Access the 'id' property
           );
         }
       })
@@ -86,14 +86,13 @@ function SupplierLoginPage() {
       .then((response) => {
         if (response.status === 200) {
           // HTTP 201 indicates resource creation
-          const newCustomer = response.data;
-          setsupplier(newCustomer);
+          const newsupplierData = response.data; // Rename for clarity
+          setsupplier(response.data);
           navigate("/supplier/dashboard");
 
-          //stroe the customer id
           sessionStorage.setItem(
-            "customerId",
-            newCustomer.customerId.toString()
+            "supplierId",
+            newsupplierData.id.toString() // Access the 'id' property
           );
           // console.log(newCustomer.customerId);
         }
