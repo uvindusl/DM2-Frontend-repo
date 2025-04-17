@@ -98,7 +98,7 @@ function CheckoutPage() {
           <div className="checkout-details">
             <ul className="checkout-list1">
               {cartItems.map((item) => (
-                <div className="food-card">
+                <div className="food-card2">
                   <li key={item.foodId}>
                     <div className="name"> {item.foodName}</div>
 
@@ -108,7 +108,7 @@ function CheckoutPage() {
                 </div>
               ))}
             </ul>
-            <div className="total-card">
+            <div className="total-card4">
               <h3>Total: Rs. {totalAmount.toFixed(2)}</h3>
               <button className="proceed-btn" onClick={handlePayment}>
                 Proceed to Payment

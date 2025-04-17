@@ -2,6 +2,7 @@
   background-image: url("../assets/background-DM2.jpg");
   min-height: 600px;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .order-review-card {
