@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
-import "../css/EmployeeViewOrders.css";
+import "../css/EmployeeViewOrders.css"; // Ensure this import is present
 import EmployeeNavBar from "../components/EmployeeNavBar";
 
 interface SubOder {
@@ -160,8 +160,6 @@ function EmployeeViewOrders() {
                 0
               );
 
-              const orderStatus = firstSubOrder?.status;
-
               return (
                 <div className="order-card" key={orderId}>
                   <h3>Order #{orderId}</h3>
@@ -171,8 +169,6 @@ function EmployeeViewOrders() {
                     {customer
                       ? `${customer.customerName} (${customer.customerAddress})`
                       : "Loading..."}
-                    <br />
-                    Status: {orderStatus}
                   </p>
                   <div className="suborder-section">
                     <h4>Order Items</h4>
@@ -190,17 +186,28 @@ function EmployeeViewOrders() {
                                 alt={food.foodName}
                                 className="food-img"
                               />
-                              <p>{food.foodName}</p>
-                              <p>Qty: {subOrder.qty}</p>
-                              <p>
+                              <p className="food-name">{food.foodName}</p>
+                              <p className="food-qty">Qty: {subOrder.qty}</p>
+                              <p className="food-price">
+                                Price: Rs. {food.foodPrice.toFixed(2)}
+                              </p>
+                              <p className="food-subtotal">
                                 Subtotal: Rs.{" "}
                                 {(subOrder.qty * food.foodPrice).toFixed(2)}
                               </p>
+                              <p className="food-status">
+                                Status: {subOrder.status}
+                              </p>
                               <button
                                 className="markComplete"
-                                onClick={() => handlecomplete(orderId, status)}
+                                onClick={() =>
+                                  handlecomplete(orderId, subOrder.status || "")
+                                }
+                                disabled={subOrder.status === "Completed"}
                               >
-                                Mark as completed
+                                {subOrder.status === "Completed"
+                                  ? "Completed"
+                                  : "Mark as completed"}
                               </button>
                             </>
                           ) : (
