@@ -11,7 +11,6 @@ interface Food {
 }
 
 interface FoodGridProps {
-  handleDeleteClick: (id: number) => void;
   food: Food;
 }
 

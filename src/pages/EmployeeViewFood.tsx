@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import FoodGrid from "../components/FoodGrid";
 import "../css/EmployeeViewFood.css";
 import axios from "axios";
 import Footer from "../components/Footer";
@@ -24,18 +23,6 @@ function EmployeeViewFood() {
   const supplierId = sessionStorage.getItem("supplierId");
 
   console.log("Supplier ID from session storage:", supplierId);
-
-  const DeleteClick = async (id: number) => {
-    try {
-      const apiUrl = `http://localhost:8080/urban-food/foods/${id}`;
-      await axios.delete(apiUrl);
-      window.location.reload();
-      console.log(apiUrl);
-    } catch (error) {
-      console.error("Error", error);
-      setError("Failed to delete");
-    }
-  };
 
   useEffect(() => {
     const apiUrl = `http://localhost:8080/urban-food/foods`;
