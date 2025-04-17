@@ -15,7 +15,7 @@ interface Food {
   foodSupplierId: number;
 }
 
-function EmployeeViewFood() {
+function SupplierViewFood() {
   const [foods, setFoods] = useState<Food[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -37,7 +37,7 @@ function EmployeeViewFood() {
   };
 
   useEffect(() => {
-    const apiUrl = `http://localhost:8080/urban-food/foods`;
+    const apiUrl = `http://localhost:8080/urban-food/foods/supplier/${supplierId}`;
 
     setLoading(true);
     axios
@@ -87,4 +87,4 @@ function EmployeeViewFood() {
   );
 }
 
-export default EmployeeViewFood;
+export default SupplierViewFood;
