@@ -46,8 +46,8 @@ function App() {
             path="/employee/update/employee/:id"
             element={<UpdateEmployeePage />}
           />
-          <Route path="/employee/add/food" element={<AddFood />} />
-          <Route path="/employee/update/food/:id" element={<UpdateFood />} />
+          <Route path="/supplier/add/food" element={<AddFood />} />
+          <Route path="/supplier/update/food/:id" element={<UpdateFood />} />
           <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
           <Route path="/Payment" element={<PaymentPage />} />
           <Route

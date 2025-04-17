@@ -4,6 +4,7 @@ import "../css/EmployeeViewFood.css";
 import axios from "axios";
 import Footer from "../components/Footer";
 import EmployeeNavBar from "../components/EmployeeNavBar";
+import EmployeeFoodGrid from "../components/EmployeeFoodGrid";
 
 interface Food {
   foodId: number;
@@ -69,13 +70,7 @@ function EmployeeViewFood() {
           <div className="food-grid-evf">
             {foods.map((food) => {
               console.log("Food in map:", food);
-              return (
-                <FoodGrid
-                  key={food.foodId}
-                  food={food}
-                  handleDeleteClick={DeleteClick}
-                />
-              );
+              return <EmployeeFoodGrid key={food.foodId} food={food} />;
             })}
           </div>
         )}

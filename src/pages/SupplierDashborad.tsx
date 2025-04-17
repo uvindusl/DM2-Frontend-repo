@@ -27,7 +27,7 @@ const SupplierDashboard: React.FC = () => {
       description: "Update and Delete Foods",
       icon: "🍕",
       route: "/supplier/view/foods",
-      routeAdd: "/employee/add/food",
+      routeAdd: "/supplier/add/food",
       buttonName: " foods",
     },
     {
