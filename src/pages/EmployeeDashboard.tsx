@@ -34,14 +34,6 @@ const EmployeeDashboard: React.FC = () => {
       routeAdd: "/employee/add/employee",
       buttonName: " employees",
     },
-    {
-      title: "View Orders",
-      description: "View Order History and Update Status",
-      icon: "📦",
-      route: "/employee/view/orders",
-      routeAdd: "",
-      buttonName: "",
-    },
   ];
 
   const filteredTiles = dashboardTiles.filter(

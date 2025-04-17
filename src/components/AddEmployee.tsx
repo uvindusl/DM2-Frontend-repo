@@ -36,7 +36,7 @@ function AddEmployee() {
           employeeName: employee.name,
           employeeAddress: employee.address,
           employeeTel: employee.telephone,
-          password: employee.password,
+          employeePassword: employee.password,
         }
       );
 

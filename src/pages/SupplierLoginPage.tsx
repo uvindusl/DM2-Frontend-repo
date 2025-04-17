@@ -86,14 +86,13 @@ function SupplierLoginPage() {
       .then((response) => {
         if (response.status === 200) {
           // HTTP 201 indicates resource creation
-          const newCustomer = response.data;
-          setsupplier(newCustomer);
+          const newsupplierData = response.data; // Rename for clarity
+          setsupplier(response.data);
           navigate("/supplier/dashboard");
 
-          //stroe the customer id
           sessionStorage.setItem(
-            "customerId",
-            newCustomer.customerId.toString()
+            "supplierId",
+            newsupplierData.id.toString() // Access the 'id' property
           );
           // console.log(newCustomer.customerId);
         }
