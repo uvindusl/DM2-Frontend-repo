@@ -21,7 +21,7 @@ interface FoodItem {
   foodName: string;
   foodDescription: string;
   foodPrice: number;
-  foodSupId?: number; // Corrected property name to match backend
+  foodSupId?: number;
 }
 
 function CartPage() {
@@ -69,12 +69,13 @@ function CartPage() {
       console.log("Fetched Food Item Response Data:", foodItem);
       console.log("Fetched Food Item for Checkout:", foodItem);
       return {
+        cartId: item.id, // Included cartId
         ...item,
         foodName: foodItem?.foodName || "",
         foodDescription: foodItem?.foodDescription || "",
         foodPic: foodItem?.foodPic || "",
         foodPrice: foodItem?.foodPrice || 0,
-        supplierId: foodItem?.foodSupId, // Corrected property name
+        supplierId: foodItem?.foodSupId,
       };
     });
 
@@ -119,7 +120,7 @@ function CartPage() {
                       subtotal: item.subTotal,
                       id: item.id,
                       customerId: item.customerId,
-                      supplierId: foodItem.foodSupId, // Corrected property name
+                      supplierId: foodItem.foodSupId,
                     }}
                     handleSingleDelete={handleSingleDelete}
                   />

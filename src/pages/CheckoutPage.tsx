@@ -3,18 +3,31 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 
+interface CartItemForCheckout {
+  cartId: number;
+  customerId: number;
+  foodId: number;
+  foodName: string;
+  foodDescription: string;
+  foodPic: string;
+  foodPrice: number;
+  qty: number;
+  subTotal: number;
+  supplierId?: number;
+}
+
 function CheckoutPage() {
   const customerId = sessionStorage.getItem("customerId");
   const location = useLocation();
   const navigate = useNavigate();
-  const { cartItems } = location.state as { cartItems: any[] };
+  const { cartItems } = location.state as { cartItems: CartItemForCheckout[] };
 
   useEffect(() => {
     console.log("Cart Items in CheckoutPage:", cartItems);
   }, [cartItems]);
 
   const totalAmount = cartItems.reduce(
-    (sum: number, item: any) => sum + item.qty * item.foodPrice,
+    (sum: number, item: CartItemForCheckout) => sum + item.qty * item.foodPrice,
     0
   );
 
@@ -29,8 +42,6 @@ function CheckoutPage() {
           orderStatus: "Pending",
         }
       );
-
-      console.log("Order Response:", orderRes);
       const orderId = orderRes.data?.id;
       console.log("Generated Order ID:", orderId);
 
@@ -56,10 +67,13 @@ function CheckoutPage() {
           );
         }
 
-        // 3. Clear cart using customerId
-        await axios.delete(
-          `http://localhost:8080/urban-food/carts?customerId=${customerId}`
-        );
+        // 3. Delete only the ordered cart items
+        for (const item of cartItems) {
+          await axios.delete(
+            `http://localhost:8080/urban-food/carts?cartId=${item.cartId}`
+          );
+          console.log(`Deleted cart item with ID: ${item.cartId}`);
+        }
 
         // 4. Redirect to payment
         navigate("/payment", { state: { totalAmount } });
@@ -76,7 +90,7 @@ function CheckoutPage() {
     <div className="checkout-page">
       <h2>Checkout</h2>
       <ul>
-        {cartItems.map((item: any) => (
+        {cartItems.map((item) => (
           <li key={item.foodId}>
             {item.foodName} - Qty: {item.qty} - Rs. {item.foodPrice * item.qty}
           </li>
