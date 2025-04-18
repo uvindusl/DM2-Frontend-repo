@@ -43,7 +43,7 @@ function EmployeeViewOrders() {
   const [error, setError] = useState<string | null>(null);
   const supplierId = sessionStorage.getItem("supplierId");
 
-  const handlecomplete = async (orderId: number, orderStatus: string) => {
+  const handlecomplete = async (id: number, orderStatus: string) => {
     if (orderStatus === "Completed") {
       alert("Order already completed");
       return;
@@ -53,9 +53,9 @@ function EmployeeViewOrders() {
       ) {
         try {
           await axios.patch(
-            `http://localhost:8083/order-micro/orders/${orderId}`,
+            `http://localhost:8080/urban-food/suborders/${id}`,
             {
-              orderStatus: "Completed",
+              status: "Completed",
             }
           );
           window.location.reload();
@@ -237,7 +237,7 @@ function EmployeeViewOrders() {
                                   className="markComplete"
                                   onClick={() =>
                                     handlecomplete(
-                                      orderId,
+                                      subOrder.id,
                                       subOrder.status || ""
                                     )
                                   }
