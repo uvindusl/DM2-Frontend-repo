@@ -181,7 +181,7 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
         <div className="unsuccess-popup">Please select a quantity!</div>
       )}
       <h4>Reviews</h4>
-      <FoodReviewView />
+      <FoodReviewView foodId={food.foodId} />
     </div>
   );
 }
