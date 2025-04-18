@@ -96,7 +96,7 @@ function FoodReviewView({ foodId }: FoodReviewViewProps) {
       {reviews.map((review) => {
         const customer = customerData[review.customerId];
         return (
-          <div key={review.feedbackId} className="food-review-card">
+          <div key={review.feedbackId} className="food-review-card1">
             <div className="food-review-card-header">
               <div className="food-review-card-content">
                 <div>

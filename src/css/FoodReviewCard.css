@@ -50,6 +50,7 @@ textarea {
   box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.2);
   height: 100px;
   border-radius: 5px;
+  color: black;
 }
 
 textarea:focus {
