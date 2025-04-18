@@ -37,7 +37,7 @@ function NavBar() {
               <a
                 className="nav-link active"
                 aria-current="page"
-                href="/checkout"
+                href="/customer/reviews"
               >
                 Order
               </a>
