@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
-import "../css/EmployeeViewOrders.css"; // Ensure this import is present
+import "../css/EmployeeViewOrders.css";
 import EmployeeNavBar from "../components/EmployeeNavBar";
 
 interface SubOder {
