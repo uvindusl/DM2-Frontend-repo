@@ -21,6 +21,7 @@ import SupplierViewFood from "./pages/SupplierViewFood";
 import CustomerProfile from "./pages/CustomerProfile";
 import CustomerReview from "./pages/CustomerReview";
 import SupplierProfile from "./pages/SupplierProfile";
+import SuppliersViewPage from "./pages/SuppliersViewPage";
 
 function App() {
   return (
@@ -63,6 +64,10 @@ function App() {
           <Route path="/customer/profile" element={<CustomerProfile />} />
           <Route path="/customer/reviews" element={<CustomerReview />} />
           <Route path="/supplier/profile" element={<SupplierProfile />} />
+          <Route
+            path="/employee/view/suppliers"
+            element={<SuppliersViewPage />}
+          />
         </Routes>
       </main>
     </div>
