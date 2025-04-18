@@ -83,7 +83,7 @@ const FoodReviewCard: React.FC<FoodReviewCardProps> = ({
 
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
-      console.log("Review submitted successfully!");
+      alert("Review submitted successfully!");
       setReviewText("");
       setRating(0);
     } catch (e: any) {
