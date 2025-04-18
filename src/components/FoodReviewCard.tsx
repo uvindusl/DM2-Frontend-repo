@@ -67,16 +67,19 @@ const FoodReviewCard: React.FC<FoodReviewCardProps> = ({
     setReviewError(null);
 
     try {
-      const response = await fetch("", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          customerId,
-          foodId,
-          reviewText,
-          rating,
-        }),
-      });
+      const response = await fetch(
+        "http://localhost:8080/urban-food/feedbacks",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            customerId,
+            productId: foodId,
+            feedback: reviewText,
+            rating,
+          }),
+        }
+      );
 
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
