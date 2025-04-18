@@ -22,6 +22,7 @@ import CustomerProfile from "./pages/CustomerProfile";
 import CustomerReview from "./pages/CustomerReview";
 import SupplierProfile from "./pages/SupplierProfile";
 import SuppliersViewPage from "./pages/SuppliersViewPage";
+import CustomersViewPage from "./pages/CustomersViewPage";
 
 function App() {
   return (
@@ -67,6 +68,10 @@ function App() {
           <Route
             path="/employee/view/suppliers"
             element={<SuppliersViewPage />}
+          />
+          <Route
+            path="/employee/view/customers"
+            element={<CustomersViewPage />}
           />
         </Routes>
       </main>
