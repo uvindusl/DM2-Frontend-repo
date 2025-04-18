@@ -181,34 +181,42 @@ function EmployeeViewOrders() {
                         >
                           {food ? (
                             <>
-                              <img
-                                src={`data:image/jpeg;base64,${food.foodPic}`}
-                                alt={food.foodName}
-                                className="food-img"
-                              />
-                              <p className="food-name">{food.foodName}</p>
-                              <p className="food-qty">Qty: {subOrder.qty}</p>
-                              <p className="food-price">
-                                Price: Rs. {food.foodPrice.toFixed(2)}
-                              </p>
-                              <p className="food-subtotal">
-                                Subtotal: Rs.{" "}
-                                {(subOrder.qty * food.foodPrice).toFixed(2)}
-                              </p>
-                              <p className="food-status">
-                                Status: {subOrder.status}
-                              </p>
-                              <button
-                                className="markComplete"
-                                onClick={() =>
-                                  handlecomplete(orderId, subOrder.status || "")
-                                }
-                                disabled={subOrder.status === "Completed"}
-                              >
-                                {subOrder.status === "Completed"
-                                  ? "Completed"
-                                  : "Mark as completed"}
-                              </button>
+                              <div>
+                                <img
+                                  src={`data:image/jpeg;base64,${food.foodPic}`}
+                                  alt={food.foodName}
+                                  className="food-img"
+                                />
+                                <p className="food-name">{food.foodName}</p>
+                                <p className="food-qty">Qty: {subOrder.qty}</p>
+                                <p className="food-price1">
+                                  Price: Rs. {food.foodPrice.toFixed(2)}
+                                </p>
+                              </div>
+                              <div>
+                                {" "}
+                                <p className="food-subtotal">
+                                  Subtotal: Rs.{" "}
+                                  {(subOrder.qty * food.foodPrice).toFixed(2)}
+                                </p>
+                                <p className="food-status">
+                                  Status: {subOrder.status}
+                                </p>
+                                <button
+                                  className="markComplete"
+                                  onClick={() =>
+                                    handlecomplete(
+                                      orderId,
+                                      subOrder.status || ""
+                                    )
+                                  }
+                                  disabled={subOrder.status === "Completed"}
+                                >
+                                  {subOrder.status === "Completed"
+                                    ? "Completed"
+                                    : "Mark as completed"}
+                                </button>
+                              </div>
                             </>
                           ) : (
                             <p>Loading food details...</p>

@@ -97,18 +97,20 @@ function CheckoutPage() {
           <div className="checkout-details">
             <ul className="checkout-list1">
               {cartItems.map((item) => (
-                <div className="food-card" key={item.foodId}>
+                <div className="food-card2" key={item.foodId}>
                   <li className="food-item">
-                    {item.foodPic && (
-                      <img
-                        src={`data:image/jpeg;base64,${item.foodPic}`}
-                        alt={item.foodName}
-                        className="food-img-checkout"
-                      />
-                    )}
-                    <div className="food-info">
-                      <div className="name"> {item.foodName}</div>
-                      <div> Rs. {(item.foodPrice * item.qty).toFixed(2)}</div>
+                    <div className="food-pic1">
+                      {item.foodPic && (
+                        <img
+                          src={`data:image/jpeg;base64,${item.foodPic}`}
+                          alt={item.foodName}
+                          className="food-img-checkout"
+                        />
+                      )}
+                      <div className="food-info">
+                        <div className="name"> {item.foodName}</div>
+                        <div> Rs. {(item.foodPrice * item.qty).toFixed(2)}</div>
+                      </div>
                     </div>
                   </li>
                   <div className="qty"> Qty: {item.qty}</div>

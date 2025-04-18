@@ -43,6 +43,28 @@
   background-color: #ffffff;
 }
 
+.food-img-checkout {
+  width: 100px;
+  height: 90px;
+  align-self: center;
+}
+
+.food-item {
+  height: 100px;
+}
+
+.food-info {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+}
+
+.food-pic1 {
+  display: flex;
+}
+
 .total-card4 {
   display: flex;
   width: 100%;
