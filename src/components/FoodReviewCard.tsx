@@ -15,23 +15,26 @@ function FoodReviewCard() {
       </div>
       <div className="food-review-card-footer">
         <form className="food-review-form">
-          <label className="review-lable"> Review</label>
-          <textarea placeholder="How the fuck u feel about this shit" />
+          <div className="review-container">
+            <label className="review-lable"> Review</label>
+            <textarea placeholder="How the fuck u feel about this shit" />
+          </div>
+          <div>
+            <label className="review-lable">Rate this</label>
+            <div className="rating-conatiner">
+              <div className="rating">
+                <input type="radio" id="star5" name="rating" defaultValue={5} />
+                <label htmlFor="star5" />
+                <input type="radio" id="star4" name="rating" defaultValue={4} />
+                <label htmlFor="star4" />
+                <input type="radio" id="star3" name="rating" defaultValue={3} />
+                <label htmlFor="star3" />
+                <input type="radio" id="star2" name="rating" defaultValue={2} />
+                <label htmlFor="star2" />
 
-          <label className="review-lable">Rate this</label>
-          <div className="rating-conatiner">
-            <div className="rating">
-              <input type="radio" id="star5" name="rating" defaultValue={5} />
-              <label htmlFor="star5" />
-              <input type="radio" id="star4" name="rating" defaultValue={4} />
-              <label htmlFor="star4" />
-              <input type="radio" id="star3" name="rating" defaultValue={3} />
-              <label htmlFor="star3" />
-              <input type="radio" id="star2" name="rating" defaultValue={2} />
-              <label htmlFor="star2" />
-
-              <input type="radio" id="star1" name="rating" defaultValue={1} />
-              <label htmlFor="star1" />
+                <input type="radio" id="star1" name="rating" defaultValue={1} />
+                <label htmlFor="star1" />
+              </div>
             </div>
           </div>
 

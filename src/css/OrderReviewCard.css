@@ -1,5 +1,8 @@
 .order-review-card-container {
+  background-image: url("../assets/background-DM2.jpg");
   min-height: 600px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .order-review-card {
@@ -17,8 +20,4 @@
   align-self: start;
   margin-top: 10px;
   margin-left: 50px;
-}
-
-body {
-  background-image: url("../assets/background-DM2.jpg");
 }

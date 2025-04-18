@@ -115,7 +115,7 @@ function CheckoutPage() {
                 </div>
               ))}
             </ul>
-            <div className="total-card">
+            <div className="total-card4">
               <h3>Total: Rs. {totalAmount.toFixed(2)}</h3>
               <button className="proceed-btn" onClick={handlePayment}>
                 Proceed to Payment

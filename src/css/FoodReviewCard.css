@@ -24,13 +24,17 @@
 
 .food-review-form {
   display: flex;
-  flex-direction: column;
   outline: none;
   border-color: var(green);
   box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.2);
   padding: 10px;
   margin: 20px;
   border-radius: 5px;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .review-lable {
@@ -40,7 +44,7 @@
 textarea {
   background-color: #ffffff;
   margin-left: 20px;
-  width: 95%;
+  width: 400px;
   border-color: (green);
   box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.2);
   height: 100px;
@@ -54,9 +58,11 @@ textarea:focus {
 }
 
 .review-submit {
+  align-self: center;
   margin: 10px;
   background-color: rgba(166, 255, 0, 0.553);
   color: black;
+  height: 40px;
   width: 100px;
   justify-self: right;
 }
