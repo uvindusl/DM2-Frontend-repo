@@ -56,7 +56,7 @@ function App() {
           <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
           <Route path="/Payment" element={<PaymentPage />} />
           <Route
-            path="/employee/view/orders"
+            path="/supplier/view/orders"
             element={<EmployeeViewOrders />}
           />
           <Route path="/supplier" element={<SupplierLoginPage />} />
