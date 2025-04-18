@@ -213,6 +213,10 @@ button:hover {
   animation: fadeIn 0.3s, fadeOut 0.5s 2.5s;
 }
 
+.hed {
+  color: #55a1bf;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
