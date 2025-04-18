@@ -6,7 +6,7 @@ function NavBar() {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/employee">
             Urban Food
           </a>
           <button
@@ -48,6 +48,24 @@ function NavBar() {
                 href="/employee/view/employees"
               >
                 Employees
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href="/employee/view/suppliers"
+              >
+                Suppliers
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href="/employee/view/customers"
+              >
+                Customers
               </a>
             </li>
           </ul>

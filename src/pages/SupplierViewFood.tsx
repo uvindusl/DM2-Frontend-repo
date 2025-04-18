@@ -3,7 +3,7 @@ import FoodGrid from "../components/FoodGrid";
 import "../css/EmployeeViewFood.css";
 import axios from "axios";
 import Footer from "../components/Footer";
-import EmployeeNavBar from "../components/EmployeeNavBar";
+import SupplierNavBar from "../components/SupplierNavBar";
 
 interface Food {
   foodId: number;
@@ -59,7 +59,7 @@ function SupplierViewFood() {
 
   return (
     <>
-      <EmployeeNavBar />
+      <SupplierNavBar />
       <div className="food-grid-page-evf">
         {loading ? (
           <p className="loading-message">Loading menu items...</p>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
 import "../css/EmployeeViewOrders.css";
-import EmployeeNavBar from "../components/EmployeeNavBar";
+import SupplierNavBar from "../components/SupplierNavBar";
 
 interface SubOder {
   id: number;
@@ -154,7 +154,7 @@ function EmployeeViewOrders() {
 
   return (
     <>
-      <EmployeeNavBar />
+      <SupplierNavBar />
       <div className="orders-page">
         <h2 className="page-title">Customer Orders</h2>
 

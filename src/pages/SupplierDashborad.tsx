@@ -34,7 +34,7 @@ const SupplierDashboard: React.FC = () => {
       title: "View Orders",
       description: "View Order History and Update Status",
       icon: "📦",
-      route: "/employee/view/orders",
+      route: "/supplier/view/orders",
       routeAdd: "",
       buttonName: "",
     },
