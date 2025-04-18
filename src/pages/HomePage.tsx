@@ -10,6 +10,7 @@ interface Food {
   foodId: number;
   foodPic: string;
   foodName: string;
+  foodCategory: string;
   foodPrice: number;
 }
 

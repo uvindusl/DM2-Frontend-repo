@@ -18,6 +18,11 @@ import EmployeeViewOrders from "./pages/EmployeeViewOrders";
 import SupplierLoginPage from "./pages/SupplierLoginPage";
 import SupplierDashboard from "./pages/SupplierDashborad";
 import SupplierViewFood from "./pages/SupplierViewFood";
+import CustomerProfile from "./pages/CustomerProfile";
+import CustomerReview from "./pages/CustomerReview";
+import SupplierProfile from "./pages/SupplierProfile";
+import SuppliersViewPage from "./pages/SuppliersViewPage";
+import CustomersViewPage from "./pages/CustomersViewPage";
 
 function App() {
   return (
@@ -57,6 +62,17 @@ function App() {
           <Route path="/supplier" element={<SupplierLoginPage />} />
           <Route path="/supplier/dashboard" element={<SupplierDashboard />} />
           <Route path="/supplier/view/foods" element={<SupplierViewFood />} />
+          <Route path="/customer/profile" element={<CustomerProfile />} />
+          <Route path="/customer/reviews" element={<CustomerReview />} />
+          <Route path="/supplier/profile" element={<SupplierProfile />} />
+          <Route
+            path="/employee/view/suppliers"
+            element={<SuppliersViewPage />}
+          />
+          <Route
+            path="/employee/view/customers"
+            element={<CustomersViewPage />}
+          />
         </Routes>
       </main>
     </div>

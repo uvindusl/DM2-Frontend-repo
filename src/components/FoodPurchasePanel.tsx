@@ -1,6 +1,7 @@
 import axios from "axios";
 import "../css/FoodPurchasePanel.css";
 import { useEffect, useState } from "react";
+import FoodReviewView from "./FoodReviewView";
 
 interface Food {
   foodId: number;
@@ -22,7 +23,7 @@ interface Supplier {
 
 interface FoodPurchasePanelProps {
   food: Food;
-  supplier: Supplier; // You are passing a 'supplier' prop, but also fetching. Let's focus on the fetched one.
+  supplier?: Supplier; // You are passing a 'supplier' prop, but also fetching. Let's focus on the fetched one.
 }
 
 function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
@@ -104,7 +105,7 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
 
   return (
     <div>
-      <div className="product-card">
+      <div className="product-card1">
         <div className="product-image">
           <img src={imageSource} alt={food.foodName} />
         </div>
@@ -171,19 +172,6 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
               {addtocartloading ? "loading..." : " Add to cart"}
             </button>
           </div>
-          <br />
-          <br />
-          <br />
-          <div className="product-review">
-            <div className="product-info-label">
-              <p className="product-review-p1">Write a review</p>
-              <p className="product-review-p2">Your ideas matter</p>
-            </div>
-            <div className="text-input">
-              <textarea className="text-area" />
-            </div>
-            <button className="action-button-review">Submit</button>
-          </div>
         </div>
       </div>
       {showSuccessPopup && (
@@ -192,6 +180,8 @@ function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
       {showUnSuccessPopup && (
         <div className="unsuccess-popup">Please select a quantity!</div>
       )}
+      <h4 className="hed">Reviews</h4>
+      <FoodReviewView foodId={food.foodId} />
     </div>
   );
 }

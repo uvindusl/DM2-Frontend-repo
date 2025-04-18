@@ -41,6 +41,15 @@ function SupplierNavBar() {
                 Foods
               </a>
             </li>
+            <li className="nav-item">
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href="/supplier/profile"
+              >
+                Profile
+              </a>
+            </li>
           </ul>
         </div>
       </nav>

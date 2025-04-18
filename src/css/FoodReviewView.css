@@ -1,0 +1,17 @@
+.food-review-card1 {
+  border-radius: 5px;
+  background-image: radial-gradient(transparent, #80c2e3);
+  margin: 10px;
+  padding-bottom: 10px;
+}
+
+.review-content {
+  background-color: #ffffff;
+  margin-left: 20px;
+  width: 400px;
+  border-color: (green);
+  box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.2);
+  height: 100px;
+  border-radius: 5px;
+  padding: 10px;
+}

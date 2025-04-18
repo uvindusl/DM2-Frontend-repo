@@ -1,7 +1,9 @@
-// src/pages/CheckoutPage.tsx
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import "../css/Checkout.css";
+import NavBar from "../components/navBar";
+import Footer from "../components/Footer";
 
 interface CartItemForCheckout {
   cartId: number;
@@ -39,7 +41,6 @@ function CheckoutPage() {
         {
           orderTotalPrice: totalAmount,
           orderCustomerId: customerId,
-          orderStatus: "Pending",
         }
       );
       const orderId = orderRes.data?.id;
@@ -49,11 +50,11 @@ function CheckoutPage() {
         // 2. Save suborders
         for (const item of cartItems) {
           const suborderPayload = {
-            customerId: customerId,
             foodId: item.foodId,
             qty: item.qty,
             orderId: orderId,
             supplierId: item.supplierId,
+            status: "Pending",
           };
           console.log("Suborder Payload:", suborderPayload);
           await axios.post(
@@ -87,17 +88,46 @@ function CheckoutPage() {
   };
 
   return (
-    <div className="checkout-page">
-      <h2>Checkout</h2>
-      <ul>
-        {cartItems.map((item) => (
-          <li key={item.foodId}>
-            {item.foodName} - Qty: {item.qty} - Rs. {item.foodPrice * item.qty}
-          </li>
-        ))}
-      </ul>
-      <h3>Total: Rs. {totalAmount.toFixed(2)}</h3>
-      <button onClick={handlePayment}>Proceed to Payment</button>
+    <div>
+      <NavBar />
+      <div className="checkout-page">
+        <h2 className="checkout-h2">Checkout</h2>
+        <div className="checkout-container1 ">
+          <div className="checkout-details">
+            <ul className="checkout-list1">
+              {cartItems.map((item) => (
+                <div className="food-card2" key={item.foodId}>
+                  <li className="food-item">
+                    <div className="food-pic1">
+                      {item.foodPic && (
+                        <img
+                          src={`data:image/jpeg;base64,${item.foodPic}`}
+                          alt={item.foodName}
+                          className="food-img-checkout"
+                        />
+                      )}
+                      <div className="food-info">
+                        <div className="name"> {item.foodName}</div>
+                        <div> Rs. {(item.foodPrice * item.qty).toFixed(2)}</div>
+                      </div>
+                    </div>
+                  </li>
+                  <div className="qty"> Qty: {item.qty}</div>
+                </div>
+              ))}
+            </ul>
+            <div className="total-card4">
+              <h3>Total: Rs. {totalAmount.toFixed(2)}</h3>
+              <button className="proceed-btn" onClick={handlePayment}>
+                Proceed to Payment
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="footer1">
+        <Footer />
+      </div>
     </div>
   );
 }

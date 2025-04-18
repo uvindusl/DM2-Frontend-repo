@@ -1,0 +1,100 @@
+.food-review-card {
+  border-radius: 5px;
+  background-color: #ffffff;
+  margin: 10px;
+  padding-bottom: 10px;
+}
+
+.food-review-card-header {
+  display: flex;
+  height: 100px;
+  width: 700px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-review-card-content {
+  display: flex;
+  align-items: center;
+}
+.details {
+  margin: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.food-review-form {
+  display: flex;
+  outline: none;
+  border-color: var(green);
+  box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.2);
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-lable {
+  margin: 10px;
+}
+
+textarea {
+  background-color: #ffffff;
+  margin-left: 20px;
+  width: 400px;
+  border-color: (green);
+  box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.2);
+  height: 100px;
+  border-radius: 5px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(rgb(7, 255, 7));
+  box-shadow: 0 0 0 2px rgba(21, 102, 17, 0.2);
+}
+
+.review-submit {
+  font-size: 15px;
+  align-self: center;
+  margin: 10px;
+  background-color: rgba(166, 255, 0, 0.553);
+  color: black;
+  height: 60px;
+  width: 100px;
+  justify-self: right;
+}
+
+.rating-conatiner {
+  margin-left: 20px;
+}
+
+.rating {
+  display: inline-block;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  float: right;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.rating label:before {
+  content: "\2605";
+  font-size: 30px;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #ffd700;
+  transition: color 0.3s;
+}

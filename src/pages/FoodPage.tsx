@@ -65,7 +65,7 @@ function FoodPage() {
         ) : error ? (
           <p>{error}</p>
         ) : food ? (
-          <FoodPurchasePanel food={food} />
+          <FoodPurchasePanel food={food} supplier={undefined} />
         ) : (
           <p>Food not found</p>
         )}

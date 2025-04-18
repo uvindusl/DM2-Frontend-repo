@@ -50,15 +50,6 @@ function NavBar() {
                 Employees
               </a>
             </li>
-            <li className="nav-item">
-              <a
-                className="nav-link active"
-                aria-current="page"
-                href="/employee/view/orders"
-              >
-                Orders
-              </a>
-            </li>
           </ul>
         </div>
       </nav>
