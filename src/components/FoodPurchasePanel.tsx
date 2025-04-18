@@ -22,7 +22,7 @@ interface Supplier {
 
 interface FoodPurchasePanelProps {
   food: Food;
-  supplier: Supplier; // You are passing a 'supplier' prop, but also fetching. Let's focus on the fetched one.
+  supplier?: Supplier; // You are passing a 'supplier' prop, but also fetching. Let's focus on the fetched one.
 }
 
 function FoodPurchasePanel({ food }: FoodPurchasePanelProps) {
