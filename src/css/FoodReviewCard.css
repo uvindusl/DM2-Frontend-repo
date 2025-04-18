@@ -2,6 +2,7 @@
   border-radius: 5px;
   background-color: #ffffff;
   margin: 10px;
+  padding-bottom: 10px;
 }
 
 .food-review-card-header {
@@ -58,11 +59,12 @@ textarea:focus {
 }
 
 .review-submit {
+  font-size: 15px;
   align-self: center;
   margin: 10px;
   background-color: rgba(166, 255, 0, 0.553);
   color: black;
-  height: 40px;
+  height: 60px;
   width: 100px;
   justify-self: right;
 }
