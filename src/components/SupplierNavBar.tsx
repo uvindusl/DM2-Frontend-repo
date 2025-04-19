@@ -6,7 +6,7 @@ function SupplierNavBar() {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand" href="/supplier">
             Urban Food
           </a>
           <button
@@ -27,7 +27,7 @@ function SupplierNavBar() {
               <a
                 className="nav-link active"
                 aria-current="page"
-                href="/employee/dashboard"
+                href="/supplier/dashboard"
               >
                 Dashboard
               </a>
@@ -36,7 +36,7 @@ function SupplierNavBar() {
               <a
                 className="nav-link active"
                 aria-current="page"
-                href="/employee/view/Foods"
+                href="/supplier/view/Foods"
               >
                 Foods
               </a>

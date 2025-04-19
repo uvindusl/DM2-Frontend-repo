@@ -50,7 +50,6 @@ function CheckoutPage() {
         // 2. Save suborders
         for (const item of cartItems) {
           const suborderPayload = {
-            customerId: customerId,
             foodId: item.foodId,
             qty: item.qty,
             orderId: orderId,

@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
-import "../css/EmployeeViewOrders.css"; // Ensure this import is present
-import EmployeeNavBar from "../components/EmployeeNavBar";
+import "../css/EmployeeViewOrders.css";
+import SupplierNavBar from "../components/SupplierNavBar";
 
 interface SubOder {
   id: number;
-  customerId: number;
   foodId: number;
   qty: number;
   orderId: number;
@@ -27,17 +26,24 @@ interface Customer {
   customerAddress: string;
 }
 
+interface Order {
+  orderId: number;
+  orderCustomerId: number;
+  orderTotalPrice: number;
+}
+
 function EmployeeViewOrders() {
   const [subOrders, setSubOrders] = useState<SubOder[]>([]);
   const [foodDetails, setFoodDetails] = useState<Record<number, Food>>({});
   const [customerDetails, setCustomerDetails] = useState<
     Record<number, Customer>
   >({});
+  const [orderDetails, setOrderDetails] = useState<Record<number, Order>>({});
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const supplierId = sessionStorage.getItem("supplierId");
 
-  const handlecomplete = async (orderId: number, orderStatus: string) => {
+  const handlecomplete = async (id: number, orderStatus: string) => {
     if (orderStatus === "Completed") {
       alert("Order already completed");
       return;
@@ -47,9 +53,9 @@ function EmployeeViewOrders() {
       ) {
         try {
           await axios.patch(
-            `http://localhost:8083/order-micro/orders/${orderId}`,
+            `http://localhost:8080/urban-food/suborders/${id}`,
             {
-              orderStatus: "Completed",
+              status: "Completed",
             }
           );
           window.location.reload();
@@ -78,8 +84,8 @@ function EmployeeViewOrders() {
         const foodIdsSet: Set<number> = new Set(
           subOrdersData.map((subOrder) => subOrder.foodId)
         );
-        const customerIdsSet: Set<number> = new Set(
-          subOrdersData.map((subOrder) => subOrder.customerId)
+        const orderIdsSet: Set<number> = new Set(
+          subOrdersData.map((subOrder) => subOrder.orderId)
         );
 
         const foodDetailsTemp: Record<number, Food> = {};
@@ -91,14 +97,14 @@ function EmployeeViewOrders() {
         }
         setFoodDetails(foodDetailsTemp);
 
-        const customerDetailsTemp: Record<number, Customer> = {};
-        for (const customerId of customerIdsSet) {
-          const { data: customer } = await axios.get<Customer>(
-            `http://localhost:8080/urban-food/customers/${customerId}`
+        const orderDetailsTemp: Record<number, Order> = {};
+        for (const orderId of orderIdsSet) {
+          const { data: order } = await axios.get<Order>(
+            `http://localhost:8080/urban-food/orders/${orderId}`
           );
-          customerDetailsTemp[customerId] = customer;
+          orderDetailsTemp[orderId] = order;
         }
-        setCustomerDetails(customerDetailsTemp);
+        setOrderDetails(orderDetailsTemp);
       } catch (err) {
         console.error("Error loading data:", err);
         setError("Failed to load sub-orders and related data.");
@@ -109,6 +115,32 @@ function EmployeeViewOrders() {
 
     fetchSupplierSubOrders();
   }, [supplierId]);
+
+  useEffect(() => {
+    const fetchCustomerDetails = async () => {
+      const customerDetailsTemp: Record<number, Customer> = {};
+      const customerIdsSet: Set<number> = new Set(
+        Object.values(orderDetails).map((order) => order.orderCustomerId)
+      );
+
+      for (const customerId of customerIdsSet) {
+        try {
+          const { data: customer } = await axios.get<Customer>(
+            `http://localhost:8080/urban-food/customers/${customerId}`
+          );
+          customerDetailsTemp[customerId] = customer;
+        } catch (error) {
+          console.error(`Error fetching customer ${customerId}:`, error);
+          // Optionally handle the error for a specific customer
+        }
+      }
+      setCustomerDetails(customerDetailsTemp);
+    };
+
+    if (!loading && Object.keys(orderDetails).length > 0) {
+      fetchCustomerDetails();
+    }
+  }, [orderDetails, loading]);
 
   // Group sub-orders by orderId
   const groupedSubOrders: Record<number, SubOder[]> = subOrders.reduce(
@@ -122,7 +154,7 @@ function EmployeeViewOrders() {
 
   return (
     <>
-      <EmployeeNavBar />
+      <SupplierNavBar />
       <div className="orders-page">
         <h2 className="page-title">Customer Orders</h2>
 
@@ -148,8 +180,8 @@ function EmployeeViewOrders() {
             {Object.keys(groupedSubOrders).map((orderIdStr) => {
               const orderId = parseInt(orderIdStr);
               const subOrdersForOrder = groupedSubOrders[orderId];
-              const firstSubOrder = subOrdersForOrder[0]; // To get customer info
-              const customer = customerDetails[firstSubOrder?.customerId];
+              const orderInfo = orderDetails[orderId];
+              const customer = customerDetails[orderInfo?.orderCustomerId];
 
               // Calculate total price for the order
               const orderTotalPrice = subOrdersForOrder.reduce(
@@ -194,7 +226,6 @@ function EmployeeViewOrders() {
                                 </p>
                               </div>
                               <div>
-                                {" "}
                                 <p className="food-subtotal">
                                   Subtotal: Rs.{" "}
                                   {(subOrder.qty * food.foodPrice).toFixed(2)}
@@ -206,7 +237,7 @@ function EmployeeViewOrders() {
                                   className="markComplete"
                                   onClick={() =>
                                     handlecomplete(
-                                      orderId,
+                                      subOrder.id,
                                       subOrder.status || ""
                                     )
                                   }

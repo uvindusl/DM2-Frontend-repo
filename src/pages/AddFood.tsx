@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Footer from "../components/Footer";
 import "../css/AddFood.css";
-import EmployeeNavBar from "../components/EmployeeNavBar";
 import { useNavigate } from "react-router-dom";
+import SupplierNavBar from "../components/SupplierNavBar";
 
 const AddFood: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -78,7 +78,7 @@ const AddFood: React.FC = () => {
 
   return (
     <div>
-      <EmployeeNavBar />
+      <SupplierNavBar />
       <div className="page-wrapper">
         <div className="add-food-container">
           <div className="form-box">
