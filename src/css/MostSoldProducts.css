@@ -1,0 +1,37 @@
+.Most-Sold-Products-title {
+  color: rgba(29, 185, 58, 0.937);
+}
+
+.Most-Sold-Products-grid {
+  display: flex;
+  width: 80%;
+  justify-self: center;
+  margin-bottom: 20px;
+}
+
+.Most-Sold-Product-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 10px;
+}
+
+.Most-Sold-Products-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Most-Sold-Products-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
