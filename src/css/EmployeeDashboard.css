@@ -23,7 +23,9 @@
 }
 
 /* Container with backdrop blur for depth */
-main.container {
+main.container1 {
+  display: flex;
+  flex-direction: column;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   border-radius: 16px;
@@ -34,9 +36,9 @@ main.container {
   position: relative;
   z-index: 1;
   background: radial-gradient(transparent, #b4e380);
-  /* height: 400px; */
-  
-  
+  width: 1500px;
+  height: 500px;
+  justify-content: center;
 }
 
 /* Elegant heading with accent line */
