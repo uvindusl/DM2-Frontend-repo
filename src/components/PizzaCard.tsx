@@ -36,7 +36,10 @@ function PizzaCard({ food }: PizzaCardProps) {
             {food.foodName}
             <br />
             {food.foodCategory}
-            <p className="author">RS.{food.foodPrice}</p>
+            <div className="card-sub-details">
+              <p className="sold-qty">Sold 100 items</p>
+              <p className="food-price">RS.{food.foodPrice}</p>
+            </div>
           </div>
         </Link>
       </div>
@@ -78,7 +81,17 @@ const StyledWrapper = styled.div`
     padding: 7px;
   }
 
-  .author {
+  .card-sub-details {
+    display: flex;
+    justify-content: space-between;
+  }
+  .sold-qty {
+    color: gray;
+    font-weight: 400;
+    font-size: 11px;
+    padding-top: 20px;
+  }
+  .food-price {
     color: gray;
     font-weight: 400;
     font-size: 11px;

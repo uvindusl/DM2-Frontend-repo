@@ -59,6 +59,7 @@ function HomePage() {
         </p>
 
         <MostSoldProducts />
+
         <div className="search-wrapper">
           <SearchBar onSearch={handleSearch} />
         </div>
