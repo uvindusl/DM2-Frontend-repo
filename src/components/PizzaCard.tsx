@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 interface Food {
   foodId: number;
@@ -14,6 +16,33 @@ interface PizzaCardProps {
 }
 
 function PizzaCard({ food }: PizzaCardProps) {
+  const [soldQuantity, setSoldQuantity] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchSoldQuantity = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/urban-food/suborders/soldqty/${food.foodId}`
+        );
+        if (response.status === 200) {
+          setSoldQuantity(response.data);
+        } else {
+          setSoldQuantity(0); // Or handle the case where no sales data is available
+        }
+      } catch (err: any) {
+        setError(err.message || "Failed to fetch sold quantity");
+        setSoldQuantity(0);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSoldQuantity();
+  }, [food.foodId]);
+
   // Create a proper data URI from base64 string
   const imageSource = food.foodPic
     ? `data:image/jpeg;base64,${food.foodPic}`
@@ -37,7 +66,13 @@ function PizzaCard({ food }: PizzaCardProps) {
             <br />
             {food.foodCategory}
             <div className="card-sub-details">
-              <p className="sold-qty">Sold 100 items</p>
+              {loading ? (
+                <p className="sold-qty">Loading...</p>
+              ) : error ? (
+                <p className="sold-qty">Error</p>
+              ) : (
+                <p className="sold-qty">Sold {soldQuantity} items</p>
+              )}
               <p className="food-price">RS.{food.foodPrice}</p>
             </div>
           </div>
