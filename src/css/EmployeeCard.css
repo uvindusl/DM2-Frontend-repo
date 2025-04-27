@@ -29,7 +29,7 @@
 }
 .employee-info {
   display: flex;
-  width: 50px;
+  width: 400px;
   flex-direction: column;
 }
 
