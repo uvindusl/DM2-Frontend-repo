@@ -27,7 +27,7 @@ const AddFood: React.FC = () => {
   };
 
   const handlecancel = async () => {
-    navigate("/employee/dashboard");
+    navigate("/Supplier/dashboard");
   };
 
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
