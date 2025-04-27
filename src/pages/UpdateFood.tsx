@@ -33,7 +33,7 @@ const UpdateFood: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const handleCancel = async () => {
-    navigate("/employee/view/foods");
+    navigate("/supplier/view/foods");
   };
 
   useEffect(() => {
