@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
 import "../css/HomePage.css";
 import axios from "axios";
+import MostSoldProducts from "../components/MostSoldProducts";
 
 interface Food {
   foodId: number;
@@ -57,9 +58,12 @@ function HomePage() {
           The place where busy life meets traditional delecacy
         </p>
 
+        <MostSoldProducts />
+
         <div className="search-wrapper">
           <SearchBar onSearch={handleSearch} />
         </div>
+
         {loading ? (
           <p className="loading-message">Loading menu items...</p>
         ) : error ? (

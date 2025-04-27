@@ -19,20 +19,20 @@ const EmployeeDashboard: React.FC = () => {
 
   const dashboardTiles: DashboardTile[] = [
     {
-      title: "view Foods",
-      description: "",
-      icon: "🍕",
-      route: "/employee/view/foods",
-      routeAdd: "",
-      buttonName: "",
-    },
-    {
       title: "Manage Employees",
       description: "Update and Delete Employees",
       icon: "👨‍🍳",
       route: "/employee/view/employees",
       routeAdd: "/employee/add/employee",
       buttonName: " employees",
+    },
+    {
+      title: "view Foods",
+      description: "",
+      icon: "🍕",
+      route: "/employee/view/foods",
+      routeAdd: "",
+      buttonName: "",
     },
     {
       title: "View Suppliers",
@@ -70,7 +70,7 @@ const EmployeeDashboard: React.FC = () => {
     <div className="bg-gray-100 min-h-screen">
       <EmployeeNavBar />
 
-      <main className="container mx-auto p-4">
+      <main className="container1 mx-auto p-4">
         <div className="mb-6">
           <h2 className="text-xl font-semibold mb-4">Employee Dashboard</h2>
         </div>
