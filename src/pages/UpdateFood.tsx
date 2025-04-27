@@ -33,7 +33,7 @@ const UpdateFood: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const handleCancel = async () => {
-    navigate("/employee/view/foods");
+    navigate("/supplier/view/foods");
   };
 
   useEffect(() => {
@@ -114,7 +114,7 @@ const UpdateFood: React.FC = () => {
         }
       );
       alert("Food updated!");
-      navigate("/employee/view/foods");
+      navigate("/supplier/view/foods");
     } catch (error: any) {
       console.error("Error updating food:", error);
       setError("Failed to update food.");
