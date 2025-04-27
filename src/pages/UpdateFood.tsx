@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import "../css/UpdateFood.css";
 import EmployeeNavBar from "../components/EmployeeNavBar";
+import SupplierNavBar from "../components/SupplierNavBar";
 
 const UpdateFood: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -59,7 +60,7 @@ const UpdateFood: React.FC = () => {
 
   return (
     <div>
-      <EmployeeNavBar />
+      <SupplierNavBar />
       <div className="page-wrapper2">
         <h2 className="title">Update Food</h2>
         <div className="update-food-container">
